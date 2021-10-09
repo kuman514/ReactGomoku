@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface TitleProps {
-  title: String
+  title: string
 }
 
 function Title(props: TitleProps) {

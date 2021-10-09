@@ -13,3 +13,18 @@
 .App-link {
   color: #61dafb;
 }
+
+.Main {
+  border: 1px solid white;
+}
+
+.Board {
+  width: 81vw;
+  display: grid;
+  grid-template-columns: repeat(19, 1fr);
+  grid-template-rows: repeat(19, 1fr);
+}
+
+.BoardButton {
+  margin: 0;
+}

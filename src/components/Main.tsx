@@ -5,7 +5,7 @@ import Bottom from './Bottom';
 
 function Main() {
   return (
-    <main>
+    <main className="Main">
       <Title title="React Gomoku" />
       <Board />
       <Bottom />
