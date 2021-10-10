@@ -20,6 +20,9 @@
 
 .Board {
   width: 81vw;
+}
+
+.Tiles {
   display: grid;
   grid-template-columns: repeat(19, 1fr);
   grid-template-rows: repeat(19, 1fr);

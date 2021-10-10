@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import BoardButton from './BoardButton';
+import Bottom from './Bottom';
 
 function Board() {
   // Using React hooks
@@ -51,13 +52,16 @@ function Board() {
 
       putStone(row, col);
     }}>
-      {
-        status.tiles.map((line, i) => {
-          return line.map((item, j) => {
-            return (<BoardButton key={`r${i}c${j}`} keyPos={`${i},${j}`} who={item} clicked={item !== 0} />);
-          });
-        })
-      }
+      <div className="Tiles">
+        {
+          status.tiles.map((line, i) => {
+            return line.map((item, j) => {
+              return (<BoardButton key={`r${i}c${j}`} keyPos={`${i},${j}`} who={item} clicked={item !== 0} />);
+            });
+          })
+        }
+      </div>
+      <Bottom onClick={resetBoard}/>
     </div>
   );
 }

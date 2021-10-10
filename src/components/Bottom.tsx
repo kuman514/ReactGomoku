@@ -1,9 +1,13 @@
 import React from 'react';
 
-function Bottom() {
+interface BottomProps {
+  onClick: Function
+}
+
+function Bottom(props: BottomProps) {
   return (
     <div className="Bottom">
-      <button>
+      <button onClick={() => {props.onClick()}}>
         Reset
       </button>
     </div>
