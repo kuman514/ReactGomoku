@@ -7,8 +7,9 @@ function Board() {
   const [status, setStatus] = useState({
     tiles: Array.from({length: 19}, () => Array.from({length: 19}, () => 0)),
     curPlayer: 1,
+    history: Array<number[]>(),
     winner: 0,
-    winningTracks: [[-1, -1]]
+    winningTracks: Array<number[]>()
   });
 
   const putStone = (row: number, col: number) => {
@@ -31,11 +32,54 @@ function Board() {
 
     const [winner, winningTracks] = checkWinner(row, col, newTiles);
 
+    const newHistory = Array.from(status.history);
+    newHistory.push([row, col]);
+
     setStatus({
       tiles: newTiles,
       curPlayer: newPlayer,
+      history: newHistory,
       winner: winner,
       winningTracks: winningTracks
+    });
+  };
+
+  const undo = () => {
+    if (status.history.length === 0) {
+      return;
+    }
+
+    const newHistory = Array.from(status.history);
+    const tmp: number[] | undefined = newHistory.pop();
+
+    if (tmp === undefined) {
+      return;
+    }
+
+    const [row, col] = tmp;
+    if (row < 0 || row >= 19 || col < 0 || col >= 19) {
+      return;
+    }
+
+    const newTiles = Array.from({length: 19}, (_, i) => Array.from(status.tiles[i]));
+    let newPlayer = 0;
+
+    newTiles[row][col] = 0;
+    switch (status.curPlayer) {
+      case 1:
+        newPlayer = 2;
+        break;
+      case 2:
+        newPlayer = 1;
+        break;
+    }
+
+    setStatus({
+      tiles: newTiles,
+      curPlayer: newPlayer,
+      history: newHistory,
+      winner: 0,
+      winningTracks: Array<number[]>()
     });
   };
 
@@ -43,8 +87,9 @@ function Board() {
     setStatus({
       tiles: Array.from({length: 19}, () => Array.from({length: 19}, () => 0)),
       curPlayer: 1,
+      history: Array<number[]>(),
       winner: 0,
-      winningTracks: [[-1, -1]]
+      winningTracks: Array<number[]>()
     });
   };
 
@@ -132,7 +177,8 @@ function Board() {
       </div>
       <Bottom
         info={status.winner !== 0 ? `Player ${status.winner} wins!` : `Player ${status.curPlayer}'s turn!`}
-        onClick={resetBoard}
+        onClickUndo={undo}
+        onClickReset={resetBoard}
       />
     </div>
   );

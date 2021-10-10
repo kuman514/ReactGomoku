@@ -2,7 +2,8 @@ import React from 'react';
 
 interface BottomProps {
   info?: string,
-  onClick: Function
+  onClickUndo: Function,
+  onClickReset: Function
 }
 
 function Bottom(props: BottomProps) {
@@ -13,7 +14,10 @@ function Bottom(props: BottomProps) {
         <div> { props.info } </div> :
         ''
       }
-      <button onClick={() => {props.onClick()}}>
+      <button onClick={() => {props.onClickUndo()}}>
+        Undo
+      </button>
+      <button onClick={() => {props.onClickReset()}}>
         Reset
       </button>
     </div>
