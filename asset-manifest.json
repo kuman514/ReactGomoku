@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/ReactGomoku/static/css/main.450d239e.chunk.css",
-    "main.js": "/ReactGomoku/static/js/main.bfbfe843.chunk.js",
-    "main.js.map": "/ReactGomoku/static/js/main.bfbfe843.chunk.js.map",
+    "main.css": "/ReactGomoku/static/css/main.df3afe55.chunk.css",
+    "main.js": "/ReactGomoku/static/js/main.218fdbe8.chunk.js",
+    "main.js.map": "/ReactGomoku/static/js/main.218fdbe8.chunk.js.map",
     "runtime-main.js": "/ReactGomoku/static/js/runtime-main.92fda1aa.js",
     "runtime-main.js.map": "/ReactGomoku/static/js/runtime-main.92fda1aa.js.map",
     "static/js/2.65fd09c2.chunk.js": "/ReactGomoku/static/js/2.65fd09c2.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.e9456d86.chunk.js": "/ReactGomoku/static/js/3.e9456d86.chunk.js",
     "static/js/3.e9456d86.chunk.js.map": "/ReactGomoku/static/js/3.e9456d86.chunk.js.map",
     "index.html": "/ReactGomoku/index.html",
-    "static/css/main.450d239e.chunk.css.map": "/ReactGomoku/static/css/main.450d239e.chunk.css.map",
+    "static/css/main.df3afe55.chunk.css.map": "/ReactGomoku/static/css/main.df3afe55.chunk.css.map",
     "static/js/2.65fd09c2.chunk.js.LICENSE.txt": "/ReactGomoku/static/js/2.65fd09c2.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.92fda1aa.js",
     "static/js/2.65fd09c2.chunk.js",
-    "static/css/main.450d239e.chunk.css",
-    "static/js/main.bfbfe843.chunk.js"
+    "static/css/main.df3afe55.chunk.css",
+    "static/js/main.218fdbe8.chunk.js"
   ]
 }
