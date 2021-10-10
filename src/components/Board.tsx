@@ -103,6 +103,8 @@ function Board() {
     return [0, []];
   };
 
+  const winningTrack: Set<string> = new Set(status.winningTracks.map((item) => `${item[0]},${item[1]}`));
+
   return (
     <div className="Board" onClick={(event) => {
       const [row, col] = (event.target as HTMLElement).id.split(',').map((item) => parseInt(item));
@@ -122,6 +124,7 @@ function Board() {
                 who={item}
                 clicked={item !== 0}
                 winnerExists={status.winner !== 0}
+                tracked={status.winner !== 0 ? (winningTrack.has(`${i},${j}`)) : false}
               />);
             });
           })
