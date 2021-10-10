@@ -9,12 +9,12 @@ interface BoardButtonProps {
 function BoardButton(props: BoardButtonProps) {
   return (
     <button
-      className="BoardButton"
+      className={`BoardButton Player${props.who}`}
       key={props.keyPos}
       id={props.keyPos}
       disabled={props.clicked}
     >
-      { props.who }
+      { props.who !== 0 ? '●' : '' }
     </button>
   );
 }

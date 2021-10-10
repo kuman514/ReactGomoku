@@ -33,7 +33,6 @@ function Board() {
     });
   };
 
-  // How can the RESET Button outside restore this board?
   const resetBoard = () => {
     setStatus({
       tiles: Array.from({length: 19}, () => Array.from({length: 19}, () => 0)),
@@ -56,7 +55,12 @@ function Board() {
         {
           status.tiles.map((line, i) => {
             return line.map((item, j) => {
-              return (<BoardButton key={`r${i}c${j}`} keyPos={`${i},${j}`} who={item} clicked={item !== 0} />);
+              return (<BoardButton
+                key={`r${i}c${j}`}
+                keyPos={`${i},${j}`}
+                who={item}
+                clicked={item !== 0}
+              />);
             });
           })
         }
