@@ -3,7 +3,8 @@ import React from 'react';
 interface BoardButtonProps {
   keyPos: string,
   who: number,
-  clicked: boolean
+  clicked: boolean,
+  winnerExists: boolean
 }
 
 function BoardButton(props: BoardButtonProps) {
@@ -12,7 +13,7 @@ function BoardButton(props: BoardButtonProps) {
       className={`BoardButton Player${props.who}`}
       key={props.keyPos}
       id={props.keyPos}
-      disabled={props.clicked}
+      disabled={props.clicked || props.winnerExists}
     >
       { props.who !== 0 ? '●' : '' }
     </button>
