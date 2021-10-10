@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import BoardButton from './BoardButton';
 
 function Board() {
+  // Using React hooks
   const [status, setStatus] = useState({
     tiles: Array.from({length: 19}, () => Array.from({length: 19}, () => 0)),
     curPlayer: 1
@@ -31,14 +32,13 @@ function Board() {
     });
   };
 
-  /*
+  // How can the RESET Button outside restore this board?
   const resetBoard = () => {
     setStatus({
       tiles: Array.from({length: 19}, () => Array.from({length: 19}, () => 0)),
       curPlayer: 1
     });
-  }
-  */
+  };
 
   return (
     <div className="Board" onClick={(event) => {
