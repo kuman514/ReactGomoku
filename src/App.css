@@ -44,6 +44,10 @@
   background-size: 100%;
 }
 
+.Player0 {
+  color: transparent;
+}
+
 .Player1 {
   color: black;
 }

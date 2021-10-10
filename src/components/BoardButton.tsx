@@ -29,7 +29,7 @@ function BoardButton(props: BoardButtonProps) {
       id={props.keyPos}
       disabled={props.clicked || props.winnerExists}
     >
-      { props.who !== 0 ? (props.who === 1 ? '⚫' : '⚪') : '' }
+      { props.who !== 0 ? (props.who === 1 ? '⚫' : '⚪') : '🔴' }
     </button>
   );
 }
