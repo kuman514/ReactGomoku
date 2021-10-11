@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import BoardButton from './BoardButton';
 import Bottom from './Bottom';
 
+const EMPTY: number = 0;
+
 function Board() {
   // Using React hooks
   const [status, setStatus] = useState({
@@ -12,23 +14,37 @@ function Board() {
     winningTracks: Array<number[]>()
   });
 
+  const isInRange = (row: number, col: number): boolean => {
+    if (row < 0 || row >= 19 || col < 0 || col >= 19) {
+      return false;
+    }
+    return true;
+  };
+
+  const getNewTiles = (row: number, col: number, player: number): number[][] => {
+    const newTiles = Array.from({length: 19}, (_, i) => Array.from(status.tiles[i]));
+    newTiles[row][col] = player;
+    return newTiles;
+  };
+
+  const getNewPlayer = (curPlayer: number): number => {
+    switch (curPlayer) {
+      case 1:
+        return 2;
+      case 2:
+        return 1;
+      default:
+        return 0;
+    }
+  };
+
   const putStone = (row: number, col: number) => {
     if (status.tiles[row][col] !== 0) {
       return;
     }
 
-    const newTiles = Array.from({length: 19}, (_, i) => Array.from(status.tiles[i]));
-    let newPlayer = 0;
-
-    newTiles[row][col] = status.curPlayer;
-    switch (status.curPlayer) {
-      case 1:
-        newPlayer = 2;
-        break;
-      case 2:
-        newPlayer = 1;
-        break;
-    }
+    const newTiles: number[][] = getNewTiles(row, col, status.curPlayer);
+    const newPlayer: number = getNewPlayer(status.curPlayer);
 
     const [winner, winningTracks] = checkWinner(row, col, newTiles);
 
@@ -61,18 +77,8 @@ function Board() {
       return;
     }
 
-    const newTiles = Array.from({length: 19}, (_, i) => Array.from(status.tiles[i]));
-    let newPlayer = 0;
-
-    newTiles[row][col] = 0;
-    switch (status.curPlayer) {
-      case 1:
-        newPlayer = 2;
-        break;
-      case 2:
-        newPlayer = 1;
-        break;
-    }
+    const newTiles: number[][] = getNewTiles(row, col, EMPTY);
+    const newPlayer: number = getNewPlayer(status.curPlayer);
 
     setStatus({
       tiles: newTiles,
@@ -96,53 +102,28 @@ function Board() {
   const checkWinner = (row: number, col: number, newTiles: number[][]): [number, number[][]] => {
     const winner: number = newTiles[row][col];
 
-    const topToBot: number[][] = [[row, col]];
-    const leftToRight: number[][] = [[row, col]];
-    const leftTopToRightBot: number[][] = [[row, col]];
-    const leftBotToRightTop: number[][] = [[row, col]];
+    const directions: number[][] = [[1, 0], [0, 1], [1, 1], [1, -1]];
+    for (let n: number = 0; n < directions.length; n++) {
+      const [rDir, cDir] = directions[n];
+      const collected: number[][] = [[row, col]];
 
-    // Vertical
-    for (let i = 1; row - i >= 0 && newTiles[row - i][col] === winner; i++) {
-      topToBot.push([row - i, col]);
-    }
-    for (let i = 1; row + i < 19 && newTiles[row + i][col] === winner; i++) {
-      topToBot.push([row + i, col]);
-    }
-    if (topToBot.length === 5) {
-      return [winner, topToBot];
-    }
+      let [curRow, curCol] = [row + rDir, col + cDir];
+      while (isInRange(curRow, curCol) && newTiles[curRow][curCol] === winner) {
+        collected.push([curRow, curCol]);
+        curRow += rDir;
+        curCol += cDir;
+      }
 
-    // Horizontal
-    for (let i = 1; col - i >= 0 && newTiles[row][col - i] === winner; i++) {
-      leftToRight.push([row, col - i]);
-    }
-    for (let i = 1; col + i < 19 && newTiles[row][col + i] === winner; i++) {
-      leftToRight.push([row, col + i]);
-    }
-    if (leftToRight.length === 5) {
-      return [winner, leftToRight];
-    }
+      [curRow, curCol] = [row - rDir, col - cDir];
+      while (isInRange(curRow, curCol) && newTiles[curRow][curCol] === winner) {
+        collected.push([curRow, curCol]);
+        curRow -= rDir;
+        curCol -= cDir;
+      }
 
-    // Left top to right bottom
-    for (let i = 1; row - i >= 0 && col - i >= 0 && newTiles[row - i][col - i] === winner; i++) {
-      leftTopToRightBot.push([row - i, col - i]);
-    }
-    for (let i = 1; row + i < 19 && col + i < 19 && newTiles[row + i][col + i] === winner; i++) {
-      leftTopToRightBot.push([row + i, col + i]);
-    }
-    if (leftTopToRightBot.length === 5) {
-      return [winner, leftTopToRightBot];
-    }
-
-    // Left bottom to right top
-    for (let i = 1; row + i < 19 && col - i >= 0 && newTiles[row + i][col - i] === winner; i++) {
-      leftBotToRightTop.push([row + i, col - i]);
-    }
-    for (let i = 1; row - i >= 0 && col + i < 19 && newTiles[row - i][col + i] === winner; i++) {
-      leftBotToRightTop.push([row - i, col + i]);
-    }
-    if (leftBotToRightTop.length === 5) {
-      return [winner, leftBotToRightTop];
+      if (collected.length === 5) {
+        return [winner, collected];
+      }
     }
 
     return [0, []];
