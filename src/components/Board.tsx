@@ -2,9 +2,17 @@ import React, { useState } from 'react';
 import BoardButton from './BoardButton';
 import Bottom from './Bottom';
 
+interface BoardProps {
+  player1PutSFX: HTMLAudioElement,
+  player2PutSFX: HTMLAudioElement,
+  undoSFX: HTMLAudioElement,
+  resetSFX: HTMLAudioElement,
+  resultSFX: HTMLAudioElement
+}
+
 const EMPTY: number = 0;
 
-function Board() {
+function Board(props: BoardProps) {
   // Using React hooks
   const [status, setStatus] = useState({
     tiles: Array.from({length: 19}, () => Array.from({length: 19}, () => 0)),
@@ -13,6 +21,28 @@ function Board() {
     winner: 0,
     winningTracks: Array<number[]>()
   });
+
+  const stopSFX = (wav: HTMLAudioElement) => {
+    if (wav) {
+      wav.pause();
+      wav.currentTime = 0;
+    }
+  };
+
+  const initSFX = () => {
+    stopSFX(props.player1PutSFX);
+    stopSFX(props.player2PutSFX);
+    stopSFX(props.undoSFX);
+    stopSFX(props.resetSFX);
+    stopSFX(props.resultSFX);
+  };
+
+  const playSFX = (wav: HTMLAudioElement) => {
+    initSFX();
+    if (wav) {
+      wav.play();
+    }
+  };
 
   const isInRange = (row: number, col: number): boolean => {
     if (row < 0 || row >= 19 || col < 0 || col >= 19) {
@@ -51,6 +81,19 @@ function Board() {
     const newHistory = Array.from(status.history);
     newHistory.push([row, col]);
 
+    if (winner !== 0) {
+      playSFX(props.resultSFX);
+    } else {
+      switch (status.curPlayer) {
+        case 1:
+          playSFX(props.player1PutSFX);
+          break;
+        case 2:
+          playSFX(props.player2PutSFX);
+          break;
+      }
+    }
+
     setStatus({
       tiles: newTiles,
       curPlayer: newPlayer,
@@ -64,6 +107,8 @@ function Board() {
     if (status.history.length === 0) {
       return;
     }
+
+    playSFX(props.undoSFX);
 
     const newHistory = Array.from(status.history);
     const tmp: number[] | undefined = newHistory.pop();
@@ -90,6 +135,8 @@ function Board() {
   };
 
   const resetBoard = () => {
+    playSFX(props.resetSFX);
+
     setStatus({
       tiles: Array.from({length: 19}, () => Array.from({length: 19}, () => 0)),
       curPlayer: 1,
