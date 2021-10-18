@@ -181,6 +181,20 @@ function Board(props: BoardProps) {
     return [0, []];
   };
 
+  const saveReplay = () => {
+    const replayData = {
+      width: WIDTH,
+      height: HEIGHT,
+      history: status.history
+    };
+
+    const file: HTMLAnchorElement = document.createElement('a');
+    const fileBlob: Blob = new Blob([JSON.stringify(replayData)], {type: 'json'});
+    file.href = URL.createObjectURL(fileBlob);
+    file.download = 'replay.json';
+    file.click();
+  };
+
   const winningTrack: Set<string> = new Set(status.winningTracks.map((item) => `${item[0]},${item[1]}`));
 
   return (
@@ -218,6 +232,7 @@ function Board(props: BoardProps) {
         }
         onClickUndo={undo}
         onClickReset={resetBoard}
+        onClickSaveReplay={saveReplay}
       />
     </div>
   );

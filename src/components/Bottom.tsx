@@ -3,7 +3,8 @@ import React from 'react';
 interface BottomProps {
   info?: string,
   onClickUndo: Function,
-  onClickReset: Function
+  onClickReset: Function,
+  onClickSaveReplay: Function
 }
 
 function Bottom(props: BottomProps) {
@@ -19,6 +20,9 @@ function Bottom(props: BottomProps) {
       </button>
       <button onClick={() => {props.onClickReset()}}>
         Reset
+      </button>
+      <button onClick={() => {props.onClickSaveReplay()}}>
+        Save As Replay
       </button>
     </div>
   );
