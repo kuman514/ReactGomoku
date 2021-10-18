@@ -209,7 +209,13 @@ function Board(props: BoardProps) {
         }
       </div>
       <Bottom
-        info={status.winner !== 0 ? `Player ${status.winner} wins!` : `Player ${status.curPlayer}'s turn!`}
+        info={
+          status.winner !== 0 
+          ? `Player ${status.winner} wins!`
+          : (status.history.length === HEIGHT * WIDTH
+            ? 'Draw!'
+            : `Player ${status.curPlayer}'s turn!`)
+        }
         onClickUndo={undo}
         onClickReset={resetBoard}
       />
