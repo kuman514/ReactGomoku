@@ -11,11 +11,16 @@ interface BoardProps {
 }
 
 const EMPTY: number = 0;
+const WIDTH: number = 19;
+const HEIGHT: number = 19;
+const OBJECTIVE: number = 5;
+const COL_BOUNDARY: number = WIDTH - 1;
+const ROW_BOUNDARY: number = HEIGHT - 1;
 
 function Board(props: BoardProps) {
   // Using React hooks
   const [status, setStatus] = useState({
-    tiles: Array.from({length: 19}, () => Array.from({length: 19}, () => 0)),
+    tiles: Array.from({length: HEIGHT}, () => Array.from({length: WIDTH}, () => 0)),
     curPlayer: 1,
     history: Array<number[]>(),
     winner: 0,
@@ -45,14 +50,14 @@ function Board(props: BoardProps) {
   };
 
   const isInRange = (row: number, col: number): boolean => {
-    if (row < 0 || row >= 19 || col < 0 || col >= 19) {
+    if (row < 0 || row > ROW_BOUNDARY || col < 0 || col > COL_BOUNDARY) {
       return false;
     }
     return true;
   };
 
   const getNewTiles = (row: number, col: number, player: number): number[][] => {
-    const newTiles = Array.from({length: 19}, (_, i) => Array.from(status.tiles[i]));
+    const newTiles = Array.from({length: HEIGHT}, (_, i) => Array.from(status.tiles[i]));
     newTiles[row][col] = player;
     return newTiles;
   };
@@ -118,7 +123,7 @@ function Board(props: BoardProps) {
     }
 
     const [row, col] = tmp;
-    if (row < 0 || row >= 19 || col < 0 || col >= 19) {
+    if (!isInRange(row, col)) {
       return;
     }
 
@@ -138,7 +143,7 @@ function Board(props: BoardProps) {
     playSFX(props.resetSFX);
 
     setStatus({
-      tiles: Array.from({length: 19}, () => Array.from({length: 19}, () => 0)),
+      tiles: Array.from({length: HEIGHT}, () => Array.from({length: WIDTH}, () => 0)),
       curPlayer: 1,
       history: Array<number[]>(),
       winner: 0,
@@ -168,7 +173,7 @@ function Board(props: BoardProps) {
         curCol -= cDir;
       }
 
-      if (collected.length === 5) {
+      if (collected.length === OBJECTIVE) {
         return [winner, collected];
       }
     }
