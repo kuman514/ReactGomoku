@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(8px + 2vmin);
   color: white;
   -ms-user-select: none; 
   -moz-user-select: -moz-none;
@@ -17,6 +17,33 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.Title, .ModeChanger, .Bottom * {
+  display: inline;
+}
+
+.Title {
+  margin-right: 1vw;
+}
+
+.ModeChanger {
+  margin-left: 1vw;
+}
+
+.Bottom button {
+  all: unset;
+  background-color: gray;
+  margin-top: 1vh;
+  margin-left: 0.25vw;
+  margin-right: 0.25vw;
+  padding-left: 0.25vw;
+  padding-right: 0.25vw;
+}
+
+.Bottom button:hover {
+  background-color: #61dafb;
+  cursor: pointer;
 }
 
 .Board {
@@ -32,6 +59,8 @@
   background-color: rgba(202, 138, 85, 0.5);
   font-size: calc(5px + 2vmin);
 }
+
+
 
 @media (orientation: landscape) {
   .Board {
