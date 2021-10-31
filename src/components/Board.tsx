@@ -7,7 +7,8 @@ interface BoardProps {
   player2PutSFX: HTMLAudioElement,
   undoSFX: HTMLAudioElement,
   resetSFX: HTMLAudioElement,
-  resultSFX: HTMLAudioElement
+  resultSFX: HTMLAudioElement,
+  themeButtons: string[]
 }
 
 const EMPTY: number = 0;
@@ -217,6 +218,7 @@ function Board(props: BoardProps) {
                 clicked={item !== 0}
                 winnerExists={status.winner !== 0}
                 tracked={status.winner !== 0 ? (winningTrack.has(`${i},${j}`)) : false}
+                theme={props.themeButtons}
               />);
             });
           })

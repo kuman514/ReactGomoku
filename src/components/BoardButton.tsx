@@ -5,7 +5,8 @@ interface BoardButtonProps {
   who: number,
   clicked: boolean,
   winnerExists: boolean,
-  tracked: boolean
+  tracked: boolean,
+  theme: string[]
 }
 
 const classNames: string[][] = [
@@ -29,7 +30,7 @@ function BoardButton(props: BoardButtonProps) {
       id={props.keyPos}
       disabled={props.clicked || props.winnerExists}
     >
-      { props.who !== 0 ? (props.who === 1 ? '⚫' : '⚪') : '🔴' }
+      { props.who !== 0 ? (props.theme[props.who - 1]) : '🔴' }
     </button>
   );
 }

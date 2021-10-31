@@ -7,7 +7,8 @@ interface ReplayBoardProps {
   player2PutSFX: HTMLAudioElement,
   undoSFX: HTMLAudioElement,
   resetSFX: HTMLAudioElement,
-  resultSFX: HTMLAudioElement
+  resultSFX: HTMLAudioElement,
+  themeButtons: string[]
 }
 
 const EMPTY: number = 0;
@@ -215,6 +216,7 @@ function ReplayBoard(props: ReplayBoardProps) {
                 clicked={true}
                 winnerExists={status.winner !== 0}
                 tracked={status.winner !== 0 ? (winningTrack.has(`${i},${j}`)) : false}
+                theme={props.themeButtons}
               />);
             });
           })
