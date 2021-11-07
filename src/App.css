@@ -146,3 +146,49 @@
     opacity: 1;
   }
 }
+
+.WinnerEffect {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  animation: WinnerEffectAnimation linear 3000ms;
+  animation-iteration-count: 1;
+}
+
+.WinnerEffectContent {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bolder;
+  animation: WinnerEffectContentAnimation linear 3000ms;
+  animation-iteration-count: 1;
+}
+
+@keyframes WinnerEffectAnimation {
+  0% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes WinnerEffectContentAnimation {
+  0% {
+    font-size: 0;
+  }
+  10% {
+    font-size: 250%;
+  }
+}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import BoardButton from './BoardButton';
 import Bottom from './Bottom';
+import WinnerEffect from './WinnerEffect';
 
 interface BoardProps {
   player1PutSFX: HTMLAudioElement,
@@ -236,6 +237,13 @@ function Board(props: BoardProps) {
         onClickReset={resetBoard}
         onClickSaveReplay={saveReplay}
       />
+      {
+        (status.winner !== 0)
+        ? <WinnerEffect
+            winner={status.winner}
+          />
+        : ''
+      }
     </div>
   );
 }
