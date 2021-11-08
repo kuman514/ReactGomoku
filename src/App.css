@@ -189,6 +189,7 @@
     font-size: 0;
   }
   10% {
+    text-shadow: 0 0 5vw #61dafb, 0 0 3vw #61dafb, 0 0 1vw #61dafb;
     font-size: 250%;
   }
 }
