@@ -80,7 +80,9 @@ export function putStone(status: StoreState, row: number, col: number): StoreSta
     curPlayer: newPlayer,
     history: newHistory,
     winner: winner,
-    winningTracks: winningTracks
+    winningTracks: new Set<string>(
+      winningTracks.map((item) => `[${item[0]},${item[1]}]`)
+    )
   };
 };
 
@@ -110,7 +112,7 @@ export function undo(status: StoreState): StoreState {
     curPlayer: newPlayer,
     history: newHistory,
     winner: EMPTY,
-    winningTracks: Array<number[]>()
+    winningTracks: new Set<string>()
   };
 };
 
@@ -121,7 +123,7 @@ export function resetBoard(status: StoreState): StoreState {
     curPlayer: 1,
     history: Array<number[]>(),
     winner: 0,
-    winningTracks: Array<number[]>()
+    winningTracks: new Set<string>()
   };
 };
 

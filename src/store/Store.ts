@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import { StoreState } from './StoreState';
+import { StoreState, initState } from './StoreState';
 import { StoreActions } from './StoreActions';
 import {
   putStone,
@@ -7,15 +7,6 @@ import {
   resetBoard,
   isAvailableMode
 } from './StoreProcess';
-
-const initState: StoreState = {
-  mode: 'GAME',
-  tiles: Array.from({length: 19}, () => Array.from({length: 19}, () => 0)),
-  curPlayer: 1,
-  history: Array<number[]>(),
-  winner: 0,
-  winningTracks: Array<number[]>()
-};
 
 export const store = createStore((state: StoreState = initState, action: StoreActions) => {
   /*
