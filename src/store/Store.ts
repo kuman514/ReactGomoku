@@ -4,7 +4,8 @@ import { StoreActions } from './StoreActions';
 import {
   putStone,
   undo,
-  resetBoard
+  resetBoard,
+  isAvailableMode
 } from './StoreProcess';
 
 const initState: StoreState = {
@@ -18,7 +19,7 @@ const initState: StoreState = {
 
 export const store = createStore((state: StoreState = initState, action: StoreActions) => {
   /*
-    1. PUT TYPE ACTION (coords)
+    1. PUT TYPE ACTION (coords: [row, col])
       - Put a tile into new coords
       - Push coords as an element in history
       - Check winner and winningTracks
@@ -35,8 +36,7 @@ export const store = createStore((state: StoreState = initState, action: StoreAc
       - Clear history
       - Set winner to 0
       - Clear winningTracks
-    4. MODECHANGE TYPE ACTION
-      - mode: 'GAME' or 'REPLAY'
+    4. MODECHANGE TYPE ACTION (mode: 'GAME' or 'REPLAY')
       - Mode change resets the whole board
   */
   switch (action.type) {
@@ -49,7 +49,7 @@ export const store = createStore((state: StoreState = initState, action: StoreAc
     case 'MODECHANGE':
       return {
         ...resetBoard(state),
-        mode: action.payload
+        mode: isAvailableMode(action.payload) ? action.payload : state.mode
       };
     default:
       return state;

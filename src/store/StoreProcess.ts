@@ -124,3 +124,12 @@ export function resetBoard(status: StoreState): StoreState {
     winningTracks: Array<number[]>()
   };
 };
+
+export function isAvailableMode(modeName: string) {
+  switch (modeName) {
+    case 'GAME': case 'REPLAY':
+      return true;
+    default:
+      return false;
+  }
+}
