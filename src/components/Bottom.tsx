@@ -1,29 +1,46 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { StoreState, initState } from '../store/StoreState';
+import styles from './Bottom.module.css';
+import GameBottom from './GameBottom';
+import ReplayBottom from './ReplayBottom';
 
-interface BottomProps {
-  info?: string,
-  onClickUndo: Function,
-  onClickReset: Function,
-  onClickSaveReplay: Function
+interface BottomState {
+  mode: string
 }
 
-function Bottom(props: BottomProps) {
+function Bottom() {
+  const selector = (state: StoreState = initState): BottomState => {
+    return {
+      mode: state.mode
+    };
+  };
+  const status = useSelector(selector);
+
+  const renderBottom = (): JSX.Element => {
+    switch (status.mode) {
+      case 'GAME':
+        return (
+          <GameBottom />
+        );
+      case 'REPLAY':
+        return (
+          <ReplayBottom />
+        );
+      default:
+        return (
+          <div>
+            Invalid mode
+          </div>
+        );
+    }
+  }
+
   return (
-    <div className="Bottom">
+    <div className={styles.Bottom}>
       {
-        (props.info && props.info !== '') ?
-        <div> { props.info } </div> :
-        ''
+        renderBottom()
       }
-      <button onClick={() => {props.onClickUndo()}}>
-        Undo
-      </button>
-      <button onClick={() => {props.onClickReset()}}>
-        Reset
-      </button>
-      <button onClick={() => {props.onClickSaveReplay()}}>
-        Save As Replay
-      </button>
     </div>
   );
 }
