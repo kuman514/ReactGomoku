@@ -19,7 +19,7 @@
   color: #61dafb;
 }
 
-.Title, .ModeChanger, .Bottom * {
+.Title, .ModeChanger * {
   display: inline;
 }
 
@@ -29,122 +29,6 @@
 
 .ModeChanger {
   margin-left: 1vw;
-}
-
-.Bottom button {
-  all: unset;
-  background-color: gray;
-  margin-top: 1vh;
-  margin-left: 0.25vw;
-  margin-right: 0.25vw;
-  padding-left: 0.25vw;
-  padding-right: 0.25vw;
-}
-
-.Bottom button:hover {
-  background-color: #61dafb;
-  cursor: pointer;
-}
-
-.Board {
-  width: 98vw;
-}
-
-.Tiles {
-  width: 100%;
-  height: 98vw;
-  display: grid;
-  grid-template-columns: repeat(19, 1fr);
-  grid-template-rows: repeat(19, 1fr);
-  background-color: rgba(202, 138, 85, 0.5);
-  font-size: calc(5px + 2vmin);
-}
-
-
-
-@media (orientation: landscape) {
-  .Board {
-    width: 85vh;
-  }
-
-  .Tiles {
-    height: 85vh;
-  }
-}
-
-.BoardButton {
-  all: unset;
-  margin: 0;
-  background-size: 100%;
-}
-
-.Player0 {
-  color: transparent;
-}
-
-.Player1 {
-  color: black;
-}
-
-.Player2 {
-  color: white;
-}
-
-.LeftTopCorner {
-  background-image: url('Img/LeftTopCorner.png');
-}
-
-.RightTopCorner {
-  background-image: url('Img/RightTopCorner.png');
-}
-
-.LeftBottomCorner {
-  background-image: url('Img/LeftBottomCorner.png');
-}
-
-.RightBottomCorner {
-  background-image: url('Img/RightBottomCorner.png');
-}
-
-.LeftEdge {
-  background-image: url('Img/LeftEdge.png');
-}
-
-.RightEdge {
-  background-image: url('Img/RightEdge.png');
-}
-
-.TopEdge {
-  background-image: url('Img/TopEdge.png');
-}
-
-.BottomEdge {
-  background-image: url('Img/BottomEdge.png');
-}
-
-.InBoard {
-  background-image: url('Img/InBoard.png');
-}
-
-.BoardButton:hover {
-  cursor: pointer;
-  opacity: 0.5;
-}
-
-.TrackedResult {
-  animation: FlashTrackedResult linear infinite 600ms;
-}
-
-@keyframes FlashTrackedResult {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.3;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 
 .WinnerEffect {
