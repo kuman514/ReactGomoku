@@ -1,17 +1,19 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
-interface ModeChangerProps {
-  onChangeMode: Function
-}
+function ModeCahnger() {
+  const dispatch = useDispatch();
 
-function ModeCahnger(props: ModeChangerProps) {
   return (
     <div className="ModeChanger" onChange={(event) => {
-      props.onChangeMode((event.target as HTMLInputElement).value);
+      dispatch({
+        type: 'MODECHANGE',
+        payload: (event.target as HTMLInputElement).value
+      });
     }}>
-      <input type="radio" id="game" name="mode" value="game" defaultChecked />
-      <label>Game Mode</label>
-      <input type="radio" id="replay" name="mode" value="replay" />
+      <input type="radio" id="game" name="mode" value="GAME" defaultChecked />
+      <label>Game</label>
+      <input type="radio" id="replay" name="mode" value="REPLAY" />
       <label>Replay</label>
     </div>
   );
