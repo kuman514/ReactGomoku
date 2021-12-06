@@ -1,4 +1,5 @@
 import { StoreState } from './StoreState';
+import { playSFX } from '../sfxs/SoundEffects';
 
 const EMPTY: number = 0;
 const WIDTH: number = 19;
@@ -74,6 +75,12 @@ export function putStone(status: StoreState, row: number, col: number): StoreSta
   const newHistory = Array.from(status.history);
   newHistory.push([row, col]);
 
+  if (winner !== 0) {
+    playSFX('RESULT');
+  } else {
+    playSFX(`P${status.curPlayer}PUT`);
+  }
+
   return {
     ...status,
     tiles: newTiles,
@@ -106,6 +113,8 @@ export function undo(status: StoreState): StoreState {
   const newTiles: number[][] = getNewTiles(status, row, col, EMPTY);
   const newPlayer: number = getNewPlayer(status.curPlayer);
 
+  playSFX('UNDO');
+
   return {
     ...status,
     tiles: newTiles,
@@ -117,6 +126,10 @@ export function undo(status: StoreState): StoreState {
 };
 
 export function resetBoard(status: StoreState): StoreState {
+  if (status.mode === 'GAME') {
+    playSFX('RESET');
+  }
+  
   return {
     ...status,
     tiles: Array.from({length: HEIGHT}, () => Array.from({length: WIDTH}, () => 0)),
