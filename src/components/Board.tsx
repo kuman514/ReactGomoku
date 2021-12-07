@@ -3,11 +3,7 @@ import { useDispatch } from 'react-redux';
 import BoardButton from './BoardButton';
 import styles from './Board.module.css'
 
-interface BoardProps {
-  themeButtons: string[]
-}
-
-function Board(props: BoardProps) {
+function Board() {
   const dispatch = useDispatch();
 
   return (
@@ -30,7 +26,6 @@ function Board(props: BoardProps) {
               return (<BoardButton
                 key={`r${i}c${j}`}
                 keyPos={`${i},${j}`}
-                theme={props.themeButtons}
               />);
             });
           })

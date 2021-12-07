@@ -1,11 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { StoreState, initState } from '../store/StoreState';
+import { themeButtons } from '../theme/Theme';
 import styles from './BoardButton.module.css';
 
 interface BoardButtonProps {
-  keyPos: string,
-  theme: string[]
+  keyPos: string
 }
 
 interface BoardButtonState {
@@ -43,7 +43,7 @@ function BoardButton(props: BoardButtonProps) {
       id={props.keyPos}
       disabled={!buttonStatus.available}
     >
-      { buttonStatus.who !== 0 ? (props.theme[buttonStatus.who - 1]) : '🔴' }
+      { buttonStatus.who !== 0 ? (themeButtons[buttonStatus.who - 1]) : '🔴' }
     </button>
   );
 }
