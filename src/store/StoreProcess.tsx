@@ -126,9 +126,7 @@ export function undo(status: StoreState): StoreState {
 };
 
 export function resetBoard(status: StoreState): StoreState {
-  if (status.mode === 'GAME') {
-    playSFX('RESET');
-  }
+  playSFX('RESET');
   
   return {
     ...status,
