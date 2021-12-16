@@ -3,12 +3,14 @@ import { useDispatch } from 'react-redux';
 import { store } from '../store/Store';
 import { StoreState } from '../store/StoreState';
 import styles from './Bottom.module.css';
+import Score from './Score';
 
 function GameBottom() {
   const dispatch = useDispatch();
   
   return (
     <div className={styles.Bottom}>
+      <Score />
       <button onClick={() => {
         dispatch({ type: 'UNDO' });
       }}>
