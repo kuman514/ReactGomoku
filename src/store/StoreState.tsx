@@ -4,7 +4,8 @@ export interface StoreState {
   curPlayer: number,
   history: number[][],
   winner: number,
-  winningTracks: Set<string>
+  winningTracks: Set<string>,
+  score: number[]
 };
 
 export const initState: StoreState = {
@@ -13,5 +14,6 @@ export const initState: StoreState = {
   curPlayer: 1,
   history: new Array<number[]>(),
   winner: 0,
-  winningTracks: new Set<string>()
+  winningTracks: new Set<string>(),
+  score: [0, 0]
 };

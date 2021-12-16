@@ -75,8 +75,13 @@ export function putStone(status: StoreState, row: number, col: number): StoreSta
   const newHistory = Array.from(status.history);
   newHistory.push([row, col]);
 
+  const newScore = Array.from(status.score);
+
   if (winner !== 0) {
     playSFX('RESULT');
+    if (status.mode === 'GAME') {
+      newScore[winner - 1]++;
+    }
   } else {
     playSFX(`P${status.curPlayer}PUT`);
   }
@@ -89,7 +94,8 @@ export function putStone(status: StoreState, row: number, col: number): StoreSta
     winner: winner,
     winningTracks: new Set<string>(
       winningTracks.map((item) => `[${item[0]},${item[1]}]`)
-    )
+    ),
+    score: newScore
   };
 };
 
