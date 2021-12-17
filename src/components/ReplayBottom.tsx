@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 function ReplayBottom() {
@@ -66,6 +66,10 @@ function ReplayBottom() {
       maxTrack: status.history.length
     });
   };
+
+  useEffect(() => {
+    document.title = `React Gomoku :: Replay Mode - ${status.curTrack} / ${status.maxTrack}`;
+  });
 
   return (
     <div className="Bottom">
