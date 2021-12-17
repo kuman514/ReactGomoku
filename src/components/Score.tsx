@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { initState, StoreState } from '../store/StoreState';
+import styles from './Score.module.css';
 
 interface ScoreState {
   p1Score: number,
@@ -21,7 +22,7 @@ function Score() {
   });
 
   return (
-    <div className="Score">
+    <div className={styles.Score}>
       <span>
         {status.p1Score} - {status.p2Score}
       </span>
