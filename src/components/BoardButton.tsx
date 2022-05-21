@@ -2,10 +2,25 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { StoreState, initState } from '../store/StoreState';
 import { themeButtons } from '../theme/Theme';
-import styles from './BoardButton.module.css';
+import styled from 'styled-components';
+
+import LeftTopCorner from '../Img/LeftTopCorner.png';
+import TopEdge from '../Img/TopEdge.png';
+import RightTopCorner from '../Img/RightTopCorner.png';
+import LeftEdge from '../Img/LeftEdge.png';
+import InBoard from '../Img/InBoard.png';
+import RightEdge from '../Img/RightEdge.png';
+import LeftBottomCorner from '../Img/LeftBottomCorner.png';
+import BottomEdge from '../Img/BottomEdge.png';
+import RightBottomCorner from '../Img/RightBottomCorner.png';
 
 interface BoardButtonProps {
   keyPos: string
+}
+
+interface BoardButtonStyleProps {
+  player: number,
+  position: number[]
 }
 
 interface BoardButtonState {
@@ -14,11 +29,55 @@ interface BoardButtonState {
   winningTracked: boolean
 }
 
-const classNames: string[][] = [
-  [styles.LeftTopCorner, styles.TopEdge, styles.RightTopCorner],
-  [styles.LeftEdge, styles.InBoard, styles.RightEdge],
-  [styles.LeftBottomCorner, styles.BottomEdge, styles.RightBottomCorner]
+const urls: string[] = [
+  LeftTopCorner, TopEdge, RightTopCorner,
+  LeftEdge, InBoard, RightEdge,
+  LeftBottomCorner, BottomEdge, RightBottomCorner
 ];
+
+const BoardButtonElement = styled.button`
+  all: unset;
+  box-sizing: border-box;
+  margin: 0;
+  background-size: 100%;
+  color: ${(props: BoardButtonStyleProps) => {
+    switch (props.player) {
+      case 1:
+        return 'black';
+      case 2:
+        return 'white';
+      default:
+        return 'transparent';
+    }
+  }};
+  background-image: url(${(props: BoardButtonStyleProps) => {
+    return urls[(3 * props.position[0]) + props.position[1]];
+  }});
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
+
+  &:focus {
+    border: 3px solid red;
+  }
+`;
+
+const TrackedButtonElement = styled(BoardButtonElement)`
+  animation: FlashTrackedResult linear infinite 600ms;
+  @keyframes FlashTrackedResult {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+`;
 
 function BoardButton(props: BoardButtonProps) {
   const [row, col] = props.keyPos.split(',').map((item) => parseInt(item));
@@ -32,19 +91,29 @@ function BoardButton(props: BoardButtonProps) {
     };
   }
   const buttonStatus = useSelector(selector);
-  const playerType: string = (buttonStatus.who !== 0) ? (buttonStatus.who === 1 ? styles.Player1 : styles.Player2) : styles.Player0;
-  const finalClassName: string = classNames[rPos][cPos];
-  const winningTracked: string = buttonStatus.winningTracked ? styles.TrackedResult : '';
-
+  if (buttonStatus.winningTracked) {
+    return (
+      <TrackedButtonElement
+        player={buttonStatus.who}
+        position={[rPos, cPos]}
+        key={props.keyPos}
+        id={props.keyPos}
+        disabled={!buttonStatus.available}
+      >
+        { buttonStatus.who !== 0 ? (themeButtons[buttonStatus.who - 1]) : '🔴' }
+      </TrackedButtonElement>
+    );
+  }
   return (
-    <button
-      className={`${styles.BoardButton} ${playerType} ${finalClassName} ${winningTracked}`}
+    <BoardButtonElement
+      player={buttonStatus.who}
+      position={[rPos, cPos]}
       key={props.keyPos}
       id={props.keyPos}
       disabled={!buttonStatus.available}
     >
       { buttonStatus.who !== 0 ? (themeButtons[buttonStatus.who - 1]) : '🔴' }
-    </button>
+    </BoardButtonElement>
   );
 }
 
