@@ -1,5 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
+
+const BottomButtonElement = styled.button`
+  all: unset;
+  background-color: gray;
+  margin-top: 1vh;
+  margin-left: 0.25vw;
+  margin-right: 0.25vw;
+  padding-left: 0.25vw;
+  padding-right: 0.25vw;
+
+  &:hover {
+    background-color: #61dafb;
+    cursor: pointer;
+  }
+`;
 
 function ReplayBottom() {
   const dispatch = useDispatch();
@@ -72,7 +88,7 @@ function ReplayBottom() {
   });
 
   return (
-    <div className="Bottom">
+    <>
       <label>Replay File: </label>
       <input
         type="file"
@@ -83,16 +99,16 @@ function ReplayBottom() {
           }
         }
       }/>
-      <button onClick={onClickPrev}>
+      <BottomButtonElement onClick={onClickPrev}>
         Prev
-      </button>
+      </BottomButtonElement>
       {
         `${status.curTrack} / ${status.maxTrack}`
       }
-      <button onClick={onClickNext}>
+      <BottomButtonElement onClick={onClickNext}>
         Next
-      </button>
-    </div>
+      </BottomButtonElement>
+    </>
   );
 }
 

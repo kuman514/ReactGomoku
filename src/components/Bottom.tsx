@@ -1,12 +1,78 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import styled from 'styled-components';
+import { store } from '../store/Store';
 import { StoreState, initState } from '../store/StoreState';
-import styles from './Bottom.module.css';
-import GameBottom from './GameBottom';
 import ReplayBottom from './ReplayBottom';
+import Score from './Score';
 
 interface BottomState {
   mode: string
+}
+
+const BottomElement = styled.div`
+  & * {
+    display: inline;
+  }
+`;
+
+const BottomButtonElement = styled.button`
+  all: unset;
+  background-color: gray;
+  margin-top: 1vh;
+  margin-left: 0.25vw;
+  margin-right: 0.25vw;
+  padding-left: 0.25vw;
+  padding-right: 0.25vw;
+
+  &:hover {
+    background-color: #61dafb;
+    cursor: pointer;
+  }
+`;
+
+function BottomType(mode: string) {
+  switch (mode) {
+    case 'GAME':
+      return (
+        <>
+          <Score />
+          <BottomButtonElement onClick={() => {
+            dispatch({ type: 'UNDO' });
+          }}>
+            Undo
+          </BottomButtonElement>
+          <BottomButtonElement onClick={() => {
+            dispatch({ type: 'RESET' });
+          }}>
+            Reset
+          </BottomButtonElement>
+          <BottomButtonElement onClick={() => {
+            const status: StoreState = store.getState();
+
+            const replayData = {
+              width: 19,
+              height: 19,
+              history: status.history
+            };
+
+            const file: HTMLAnchorElement = document.createElement('a');
+            const fileBlob: Blob = new Blob([JSON.stringify(replayData)], {type: 'json'});
+            file.href = URL.createObjectURL(fileBlob);
+            file.download = 'replay.json';
+            file.click();
+          }}>
+            Save As Replay
+          </BottomButtonElement>
+        </>
+      );
+    case 'REPLAY':
+      return (
+        <ReplayBottom />
+      );
+    default:
+      return null;
+  }
 }
 
 function Bottom() {
@@ -17,32 +83,15 @@ function Bottom() {
   };
   const status = useSelector(selector);
 
-  const renderBottom = (): JSX.Element => {
-    switch (status.mode) {
-      case 'GAME':
-        return (
-          <GameBottom />
-        );
-      case 'REPLAY':
-        return (
-          <ReplayBottom />
-        );
-      default:
-        return (
-          <div>
-            Invalid mode
-          </div>
-        );
-    }
-  }
-
   return (
-    <div className={styles.Bottom}>
-      {
-        renderBottom()
-      }
-    </div>
+    <BottomElement>
+      {BottomType(status.mode)}
+    </BottomElement>
   );
 }
 
 export default Bottom;
+function dispatch(arg0: { type: string; }) {
+  throw new Error('Function not implemented.');
+}
+
