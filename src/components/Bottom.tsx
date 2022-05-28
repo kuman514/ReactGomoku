@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { store } from '../store/Store';
 import { StoreState, initState } from '../store/StoreState';
@@ -32,6 +32,7 @@ const BottomButtonElement = styled.button`
 `;
 
 function BottomType(mode: string) {
+  const dispatch = useDispatch();
   switch (mode) {
     case 'GAME':
       return (
@@ -91,7 +92,3 @@ function Bottom() {
 }
 
 export default Bottom;
-function dispatch(arg0: { type: string; }) {
-  throw new Error('Function not implemented.');
-}
-
