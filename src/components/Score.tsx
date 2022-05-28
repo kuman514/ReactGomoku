@@ -8,7 +8,7 @@ interface ScoreState {
   p2Score: number
 }
 
-const ScoreElement = styled.button`
+const ScoreElement = styled.div`
   margin-left: 10px;
   margin-right: 10px;
 `;
