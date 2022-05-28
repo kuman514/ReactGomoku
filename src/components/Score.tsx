@@ -1,12 +1,17 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import styled from 'styled-components';
 import { initState, StoreState } from '../store/StoreState';
-import styles from './Score.module.css';
 
 interface ScoreState {
   p1Score: number,
   p2Score: number
 }
+
+const ScoreElement = styled.button`
+  margin-left: 10px;
+  margin-right: 10px;
+`;
 
 function Score() {
   const selector = (state: StoreState = initState): ScoreState => {
@@ -22,11 +27,11 @@ function Score() {
   });
 
   return (
-    <div className={styles.Score}>
+    <ScoreElement>
       <span>
         {status.p1Score} - {status.p2Score}
       </span>
-    </div>
+    </ScoreElement>
   );
 }
 
