@@ -1,11 +1,19 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
 
-function ModeCahnger() {
+const ModeChangerElement = styled.div`
+  margin-left: 1vw;
+  & * {
+    display: inline;
+  }
+`;
+
+function ModeChanger() {
   const dispatch = useDispatch();
 
   return (
-    <div className="ModeChanger" onChange={(event) => {
+    <ModeChangerElement onChange={(event) => {
       dispatch({
         type: 'MODECHANGE',
         payload: (event.target as HTMLInputElement).value
@@ -15,8 +23,8 @@ function ModeCahnger() {
       <label>Game</label>
       <input type="radio" id="replay" name="mode" value="REPLAY" />
       <label>Replay</label>
-    </div>
+    </ModeChangerElement>
   );
 }
 
-export default ModeCahnger;
+export default ModeChanger;

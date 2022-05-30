@@ -19,16 +19,12 @@
   color: #61dafb;
 }
 
-.Title, .ModeChanger * {
+.Title * {
   display: inline;
 }
 
 .Title {
   margin-right: 1vw;
-}
-
-.ModeChanger {
-  margin-left: 1vw;
 }
 
 .WinnerEffect {
