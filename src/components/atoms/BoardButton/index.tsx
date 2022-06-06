@@ -14,7 +14,7 @@ import * as T from 'types';
 
 interface BoardButtonStyleProps {
   position: T.ButtonPosition;
-  color: string;
+  put?: boolean;
   flash?: boolean;
 }
 
@@ -35,7 +35,7 @@ const BoardButton = styled.button`
   box-sizing: border-box;
   margin: 0;
   background-size: 100%;
-  color: ${(props: BoardButtonStyleProps) => props.color};
+  color: ${(props: BoardButtonStyleProps) => props.put ? '#000000' : 'transparent'};
   background-image: url(${(props: BoardButtonStyleProps) => {
     return urls[props.position];
   }});
