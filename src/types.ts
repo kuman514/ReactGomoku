@@ -9,4 +9,22 @@ export enum ButtonPosition {
   BottomEdge = 'BOTTOM_EDGE',
   RightBottomCorner = 'RIGHT_BOTTOM_CORNER',
 };
+export const ButtonPositionIndex = [
+  ButtonPosition.LeftTopCorner,
+  ButtonPosition.TopEdge,
+  ButtonPosition.RightTopCorner,
+  ButtonPosition.LeftEdge,
+  ButtonPosition.InBoard,
+  ButtonPosition.RightEdge,
+  ButtonPosition.LeftBottomCorner,
+  ButtonPosition.BottomEdge,
+  ButtonPosition.RightBottomCorner,
+];
 export type ButtonBackgroundUrls = Record<ButtonPosition, string>;
+
+export enum Edges {
+  LeftEdge = 0,
+  RightEdge = 18,
+  TopEdge = 0,
+  BottomEdge = 18,
+};
