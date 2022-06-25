@@ -54,12 +54,21 @@ function BoardTile(props: BoardTileProps) {
   const whoPut: number = useSelector(whoPutSelector);
   const stone: string = getStone(whoPut);
 
+  const isPutSelector: (state: StoreState) => boolean = (state) => {
+    if (state.tiles[props.row][props.col] === 0) return false;
+
+    return true;
+  };
+  const isPut: boolean = useSelector(isPutSelector);
+
   const isAvailableSelector: (state: StoreState) => boolean = (state) => {
-    return (
-      (state.mode === 'GAME')
-      && (state.winner === 0)
-      && (state.tiles[props.row][props.col] === 0)
-    );
+    if (state.mode !== 'GAME') return false;
+
+    if (state.winner !== 0) return false;
+
+    if (state.tiles[props.row][props.col] !== 0) return false;
+
+    return true;
   };
   const isAvailable: boolean = useSelector(isAvailableSelector);
   const isDisabled: boolean = !isAvailable;
@@ -76,7 +85,7 @@ function BoardTile(props: BoardTileProps) {
   return (
     <BoardButton
       position={position}
-      put={isDisabled}
+      put={isPut}
       flash={isTracked}
       disabled={isDisabled}
       onClick={onClickTile}
