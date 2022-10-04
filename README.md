@@ -1,5 +1,5 @@
 # ReactGomoku
-`React + TypeScript`로 만든, [고모쿠 룰](https://github.com/kuman514/ReactGomoku#gomoku-rule-%EA%B3%A0%EB%AA%A8%EC%BF%A0-%EB%A3%B0) 오목 앱.   
+`React + TypeScript`로 만든, [고모쿠 룰](https://github.com/kuman514/ReactGomoku#gomoku-rule-%EA%B3%A0%EB%AA%A8%EC%BF%A0-%EB%A3%B0) 오목 앱.
 ([앱 사용해보기](https://kuman514.github.io/ReactGomoku/))
 
 # Objective (목적)
@@ -17,6 +17,7 @@
     4. 따라서 앱의 상태를 따로 보관하는 하나의 근원을 필요로 하게 되었음.
 - ~~`styled-components`를 이용하여 각 컴포넌트마다 하나의 TypeScript 파일로 관리하기.~~(완료)
 - `Atomic Design Pattern`을 이용하여 보다 체계적인 컴포넌트 구조 만들기.
+- `Next.js` + `CircleCI` + `Vercel`을 이용하여 배포 자동화 시도해보기.
 
 # Gomoku Rule (고모쿠 룰)
 - 흑색(Player 1)이 먼저 시작하며, 백색(Player 2)과 번갈아가며 바둑돌을 둡니다.
