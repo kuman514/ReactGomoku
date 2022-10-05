@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { initState, StoreState } from '../store/StoreState';
+import { initState, StoreState } from 'store/StoreState';
 
 interface ScoreState {
   p1Score: number,
