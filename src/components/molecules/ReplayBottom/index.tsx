@@ -41,7 +41,7 @@ function ReplayBottom() {
       if (result.history === null || result.history === undefined) {
         return;
       }
-      
+
       dispatch({ type: 'RESET' });
       setStatus({
         history: result.history,
