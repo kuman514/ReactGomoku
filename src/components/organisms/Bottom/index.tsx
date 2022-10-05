@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { store } from '../store/Store';
-import { StoreState, initState } from '../store/StoreState';
-import ReplayBottom from './ReplayBottom';
-import Score from './Score';
+import { store } from 'store/Store';
+import { StoreState, initState } from 'store/StoreState';
+import Score from 'components/atoms/Score';
+import ReplayBottom from 'components/molecules/ReplayBottom';
 
 interface BottomState {
   mode: string
