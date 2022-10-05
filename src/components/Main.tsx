@@ -1,10 +1,10 @@
 import React from 'react';
-import Title from './Title';
-import Board from './Board';
-import Bottom from './Bottom';
-import ModeChanger from './ModeChanger';
-import WinnerEffect from './WinnerEffect';
-import { themeTitle } from '../theme/Theme';
+import Title from 'components/atoms/Title';
+import Board from 'components/organisms/Board';
+import ModeChanger from 'components/organisms/ModeChanger';
+import Bottom from 'components/organisms/Bottom';
+import WinnerEffect from 'components/molecules/WinnerEffect';
+import { themeTitle } from 'theme/Theme';
 
 function Main() {
   return (
