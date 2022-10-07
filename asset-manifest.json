@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/ReactGomoku/static/css/main.0298bb10.chunk.css",
-    "main.js": "/ReactGomoku/static/js/main.38ca128c.chunk.js",
-    "main.js.map": "/ReactGomoku/static/js/main.38ca128c.chunk.js.map",
-    "runtime-main.js": "/ReactGomoku/static/js/runtime-main.fc40e40c.js",
-    "runtime-main.js.map": "/ReactGomoku/static/js/runtime-main.fc40e40c.js.map",
-    "static/js/2.44086d1c.chunk.js": "/ReactGomoku/static/js/2.44086d1c.chunk.js",
-    "static/js/2.44086d1c.chunk.js.map": "/ReactGomoku/static/js/2.44086d1c.chunk.js.map",
-    "static/js/3.0c9cfae2.chunk.js": "/ReactGomoku/static/js/3.0c9cfae2.chunk.js",
-    "static/js/3.0c9cfae2.chunk.js.map": "/ReactGomoku/static/js/3.0c9cfae2.chunk.js.map",
+    "main.js": "/ReactGomoku/static/js/main.f2bde386.chunk.js",
+    "main.js.map": "/ReactGomoku/static/js/main.f2bde386.chunk.js.map",
+    "runtime-main.js": "/ReactGomoku/static/js/runtime-main.130b4e57.js",
+    "runtime-main.js.map": "/ReactGomoku/static/js/runtime-main.130b4e57.js.map",
+    "static/js/2.df2a9dbd.chunk.js": "/ReactGomoku/static/js/2.df2a9dbd.chunk.js",
+    "static/js/2.df2a9dbd.chunk.js.map": "/ReactGomoku/static/js/2.df2a9dbd.chunk.js.map",
+    "static/js/3.55a135f6.chunk.js": "/ReactGomoku/static/js/3.55a135f6.chunk.js",
+    "static/js/3.55a135f6.chunk.js.map": "/ReactGomoku/static/js/3.55a135f6.chunk.js.map",
     "index.html": "/ReactGomoku/index.html",
     "static/css/main.0298bb10.chunk.css.map": "/ReactGomoku/static/css/main.0298bb10.chunk.css.map",
-    "static/js/2.44086d1c.chunk.js.LICENSE.txt": "/ReactGomoku/static/js/2.44086d1c.chunk.js.LICENSE.txt"
+    "static/js/2.df2a9dbd.chunk.js.LICENSE.txt": "/ReactGomoku/static/js/2.df2a9dbd.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.fc40e40c.js",
-    "static/js/2.44086d1c.chunk.js",
+    "static/js/runtime-main.130b4e57.js",
+    "static/js/2.df2a9dbd.chunk.js",
     "static/css/main.0298bb10.chunk.css",
-    "static/js/main.38ca128c.chunk.js"
+    "static/js/main.f2bde386.chunk.js"
   ]
 }
