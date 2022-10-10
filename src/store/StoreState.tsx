@@ -1,5 +1,7 @@
+import { AppMode } from 'types';
+
 export interface StoreState {
-  mode: string,
+  mode: AppMode,
   tiles: number[][],
   curPlayer: number,
   history: number[][],
@@ -9,7 +11,7 @@ export interface StoreState {
 };
 
 export const initState: StoreState = {
-  mode: 'GAME',
+  mode: AppMode.GAME,
   tiles: Array.from({length: 19}, () => Array.from({length: 19}, () => 0)),
   curPlayer: 1,
   history: new Array<number[]>(),

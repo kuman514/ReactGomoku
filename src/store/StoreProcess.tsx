@@ -1,5 +1,6 @@
 import { StoreState } from './StoreState';
 import { playSFX } from '../sfxs/SoundEffects';
+import { AppMode } from 'types';
 
 const EMPTY: number = 0;
 const WIDTH: number = 19;
@@ -79,7 +80,7 @@ export function putStone(status: StoreState, row: number, col: number): StoreSta
 
   if (winner !== 0) {
     playSFX('RESULT');
-    if (status.mode === 'GAME') {
+    if (status.mode === AppMode.GAME) {
       newScore[winner - 1]++;
     }
   } else {
@@ -133,7 +134,7 @@ export function undo(status: StoreState): StoreState {
 
 export function resetBoard(status: StoreState): StoreState {
   playSFX('RESET');
-  
+
   return {
     ...status,
     tiles: Array.from({length: HEIGHT}, () => Array.from({length: WIDTH}, () => 0)),
@@ -146,7 +147,7 @@ export function resetBoard(status: StoreState): StoreState {
 
 export function isAvailableMode(modeName: string) {
   switch (modeName) {
-    case 'GAME': case 'REPLAY':
+    case AppMode.GAME: case AppMode.REPLAY:
       return true;
     default:
       return false;

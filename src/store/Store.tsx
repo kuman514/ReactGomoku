@@ -27,7 +27,7 @@ export const store = createStore((state: StoreState = initState, action: StoreAc
       - Clear history
       - Set winner to 0
       - Clear winningTracks
-    4. MODECHANGE TYPE ACTION (mode: 'GAME' or 'REPLAY')
+    4. MODECHANGE TYPE ACTION (mode: AppMode)
       - Mode change resets the whole board
   */
   switch (action.type) {

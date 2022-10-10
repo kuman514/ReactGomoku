@@ -1,6 +1,8 @@
+import { AppMode } from 'types';
+
 interface ModeSelectorProps {
   id: string;
-  value: string;
+  value: AppMode;
   children?: string | JSX.Element;
   defaultChecked?: boolean;
 }

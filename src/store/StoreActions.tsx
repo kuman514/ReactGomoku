@@ -1,4 +1,5 @@
 import { Action } from 'redux';
+import { AppMode } from 'types';
 
 // PUT
 class PutTileAction implements Action {
@@ -19,10 +20,10 @@ class ResetAction implements Action {
 // MODECHANGE
 class ModeChangeAction implements Action {
   readonly type = 'MODECHANGE';
-  constructor(public payload: string) {}
+  constructor(public payload: AppMode) {}
 }
 
-export type StoreActions = 
+export type StoreActions =
   | PutTileAction
   | UndoAction
   | ResetAction

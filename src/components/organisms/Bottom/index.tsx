@@ -5,9 +5,10 @@ import { store } from 'store/Store';
 import { StoreState, initState } from 'store/StoreState';
 import Score from 'components/atoms/Score';
 import ReplayBottom from 'components/molecules/ReplayBottom';
+import { AppMode } from 'types';
 
 interface BottomState {
-  mode: string
+  mode: AppMode;
 }
 
 const BottomElement = styled.div`
@@ -31,10 +32,10 @@ const BottomButtonElement = styled.button`
   }
 `;
 
-function BottomType(mode: string) {
+function BottomType(mode: AppMode) {
   const dispatch = useDispatch();
   switch (mode) {
-    case 'GAME':
+    case AppMode.GAME:
       return (
         <>
           <Score />
@@ -67,7 +68,7 @@ function BottomType(mode: string) {
           </BottomButtonElement>
         </>
       );
-    case 'REPLAY':
+    case AppMode.REPLAY:
       return (
         <ReplayBottom />
       );

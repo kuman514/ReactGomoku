@@ -47,7 +47,7 @@ const getStone: (who?: number) => string = (who) => {
 
 function BoardTile(props: BoardTileProps) {
   const position: T.ButtonPosition = getPosition(props.row, props.col);
-  
+
   const whoPutSelector: (state: StoreState) => number = (state) => {
     return state.tiles[props.row][props.col];
   };
@@ -62,7 +62,7 @@ function BoardTile(props: BoardTileProps) {
   const isPut: boolean = useSelector(isPutSelector);
 
   const isAvailableSelector: (state: StoreState) => boolean = (state) => {
-    if (state.mode !== 'GAME') return false;
+    if (state.mode !== T.AppMode.GAME) return false;
 
     if (state.winner !== 0) return false;
 

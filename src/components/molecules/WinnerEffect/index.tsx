@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { initState, StoreState } from 'store/StoreState';
+import { AppMode } from 'types';
 
 interface WinnerEffectState {
   winner: number,
@@ -64,7 +65,7 @@ function WinnerEffect() {
   };
   const status = useSelector(selector);
   const renderWinnerEffect = () => {
-    if (status.mode === 'GAME' && status.winner !== 0) {
+    if (status.mode === AppMode.GAME && status.winner !== 0) {
       return (
         <WinnerEffectElement>
           <WinnerEffectContentElement>

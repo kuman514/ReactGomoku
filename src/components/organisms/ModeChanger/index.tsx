@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import ModeSelector from 'components/molecules/ModeSelector';
+import { AppMode } from 'types';
 
 const ModeChangerElement = styled.div`
   & * {
@@ -20,14 +21,14 @@ function ModeChanger() {
     }}>
       <ModeSelector
         id='game'
-        value='GAME'
+        value={AppMode.GAME}
         defaultChecked
       >
         Game
       </ModeSelector>
       <ModeSelector
         id='replay'
-        value='REPLAY'
+        value={AppMode.REPLAY}
       >
         Replay
       </ModeSelector>
