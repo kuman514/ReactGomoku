@@ -34,4 +34,10 @@ export enum Edges {
 export enum AppMode {
   GAME = 'GAME',
   REPLAY = 'REPLAY',
-}
+};
+
+export enum Player {
+  NONE = 0,
+  PLAYER1 = 1,
+  PLAYER2 = 2,
+};

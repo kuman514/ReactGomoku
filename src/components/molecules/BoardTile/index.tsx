@@ -36,9 +36,9 @@ const getPosition: (row: number, col: number) => T.ButtonPosition = (row, col) =
   return T.ButtonPositionIndex[finalIndex];
 }
 
-const getStone: (who?: number) => string = (who) => {
+const getStone: (who?: T.Player) => string = (who) => {
   switch (who) {
-    case 1: case 2:
+    case T.Player.PLAYER1: case T.Player.PLAYER2:
       return themeButtons[who - 1];
     default:
       return '❌';
@@ -48,14 +48,14 @@ const getStone: (who?: number) => string = (who) => {
 function BoardTile(props: BoardTileProps) {
   const position: T.ButtonPosition = getPosition(props.row, props.col);
 
-  const whoPutSelector: (state: StoreState) => number = (state) => {
+  const whoPutSelector: (state: StoreState) => T.Player = (state) => {
     return state.tiles[props.row][props.col];
   };
-  const whoPut: number = useSelector(whoPutSelector);
+  const whoPut: T.Player = useSelector(whoPutSelector);
   const stone: string = getStone(whoPut);
 
   const isPutSelector: (state: StoreState) => boolean = (state) => {
-    if (state.tiles[props.row][props.col] === 0) return false;
+    if (state.tiles[props.row][props.col] === T.Player.NONE) return false;
 
     return true;
   };
@@ -64,9 +64,9 @@ function BoardTile(props: BoardTileProps) {
   const isAvailableSelector: (state: StoreState) => boolean = (state) => {
     if (state.mode !== T.AppMode.GAME) return false;
 
-    if (state.winner !== 0) return false;
+    if (state.winner !== T.Player.NONE) return false;
 
-    if (state.tiles[props.row][props.col] !== 0) return false;
+    if (state.tiles[props.row][props.col] !== T.Player.NONE) return false;
 
     return true;
   };

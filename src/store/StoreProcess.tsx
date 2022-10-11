@@ -1,6 +1,6 @@
 import { StoreState } from './StoreState';
 import { playSFX } from '../sfxs/SoundEffects';
-import { AppMode } from 'types';
+import { AppMode, Player } from 'types';
 
 const EMPTY: number = 0;
 const WIDTH: number = 19;
@@ -16,25 +16,25 @@ function isInRange(row: number, col: number): boolean {
   return true;
 };
 
-function getNewTiles(status: StoreState, row: number, col: number, player: number): number[][] {
+function getNewTiles(status: StoreState, row: number, col: number, player: Player): Player[][] {
   const newTiles = Array.from({length: HEIGHT}, (_, i) => Array.from(status.tiles[i]));
   newTiles[row][col] = player;
   return newTiles;
 };
 
-function getNewPlayer(curPlayer: number): number {
+function getNewPlayer(curPlayer: Player): Player {
   switch (curPlayer) {
-    case 1:
-      return 2;
-    case 2:
-      return 1;
+    case Player.PLAYER1:
+      return Player.PLAYER2;
+    case Player.PLAYER2:
+      return Player.PLAYER1;
     default:
       return 0;
   }
 };
 
-function checkWinner(row: number, col: number, newTiles: number[][]): [number, number[][]] {
-  const winner: number = newTiles[row][col];
+function checkWinner(row: number, col: number, newTiles: Player[][]): [Player, number[][]] {
+  const winner: Player = newTiles[row][col];
 
   const directions: number[][] = [[1, 0], [0, 1], [1, 1], [1, -1]];
   for (let n: number = 0; n < directions.length; n++) {
@@ -60,16 +60,16 @@ function checkWinner(row: number, col: number, newTiles: number[][]): [number, n
     }
   }
 
-  return [0, []];
+  return [Player.NONE, []];
 };
 
 export function putStone(status: StoreState, row: number, col: number): StoreState {
-  if (status.tiles[row][col] !== 0) {
+  if (status.tiles[row][col] !== Player.NONE) {
     return status;
   }
 
-  const newTiles: number[][] = getNewTiles(status, row, col, status.curPlayer);
-  const newPlayer: number = getNewPlayer(status.curPlayer);
+  const newTiles: Player[][] = getNewTiles(status, row, col, status.curPlayer);
+  const newPlayer: Player = getNewPlayer(status.curPlayer);
 
   const [winner, winningTracks] = checkWinner(row, col, newTiles);
 
@@ -117,8 +117,8 @@ export function undo(status: StoreState): StoreState {
     return status;
   }
 
-  const newTiles: number[][] = getNewTiles(status, row, col, EMPTY);
-  const newPlayer: number = getNewPlayer(status.curPlayer);
+  const newTiles: Player[][] = getNewTiles(status, row, col, EMPTY);
+  const newPlayer: Player = getNewPlayer(status.curPlayer);
 
   playSFX('UNDO');
 
@@ -137,10 +137,10 @@ export function resetBoard(status: StoreState): StoreState {
 
   return {
     ...status,
-    tiles: Array.from({length: HEIGHT}, () => Array.from({length: WIDTH}, () => 0)),
-    curPlayer: 1,
+    tiles: Array.from({length: HEIGHT}, () => Array.from({length: WIDTH}, () => Player.NONE)),
+    curPlayer: Player.PLAYER1,
     history: Array<number[]>(),
-    winner: 0,
+    winner: Player.NONE,
     winningTracks: new Set<string>()
   };
 };
