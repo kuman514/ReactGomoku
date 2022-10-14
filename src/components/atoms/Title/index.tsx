@@ -12,10 +12,10 @@ const TitleElement = styled.div`
   }
 `;
 
-function Title(props: TitleProps) {
+function Title({ title }: TitleProps) {
   return (
     <TitleElement>
-      { props.title }
+      { title }
     </TitleElement>
   );
 }
