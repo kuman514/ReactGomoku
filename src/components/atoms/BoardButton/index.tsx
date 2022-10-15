@@ -35,8 +35,8 @@ const BoardButton = styled.button`
   box-sizing: border-box;
   margin: 0;
   background-size: 100%;
-  color: ${(props: BoardButtonStyleProps) => props.put ? '#000000' : 'transparent'};
-  background-image: url(${(props: BoardButtonStyleProps) => urls[props.position]});
+  color: ${({ put }: BoardButtonStyleProps) => put ? '#000000' : 'transparent'};
+  background-image: url(${({ position }: BoardButtonStyleProps) => urls[position]});
 
   &:hover {
     cursor: pointer;
@@ -47,7 +47,7 @@ const BoardButton = styled.button`
     border: 3px solid red;
   }
 
-  animation: ${(props: BoardButtonStyleProps) => props.flash
+  animation: ${({ flash }: BoardButtonStyleProps) => flash
     ? 'FlashTrackedResult linear infinite 600ms'
     : 'none'
   };
