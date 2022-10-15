@@ -3,33 +3,26 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { initState, StoreState } from 'store/StoreState';
 
-interface ScoreState {
-  p1Score: number,
-  p2Score: number
-}
-
 const ScoreElement = styled.div`
   margin-left: 10px;
   margin-right: 10px;
 `;
 
 function Score() {
-  const selector = (state: StoreState = initState): ScoreState => {
-    return {
-      p1Score: state.score[0],
-      p2Score: state.score[1]
-    };
-  };
-  const status = useSelector(selector);
+  const p1ScoreSelector = ({ score }: StoreState = initState) => (score[0]);
+  const p1Score = useSelector(p1ScoreSelector);
+
+  const p2ScoreSelector = ({ score }: StoreState = initState) => (score[1]);
+  const p2Score = useSelector(p2ScoreSelector);
 
   useEffect(() => {
-    document.title = `React Gomoku :: ${status.p1Score} - ${status.p2Score}`;
+    document.title = `React Gomoku :: ${p1Score} - ${p2Score}`;
   });
 
   return (
     <ScoreElement>
       <span>
-        {status.p1Score} - {status.p2Score}
+        {p1Score} - {p2Score}
       </span>
     </ScoreElement>
   );
