@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface TitleProps {
-  title: string
+  readonly title: string
 }
 
 const TitleElement = styled.div`

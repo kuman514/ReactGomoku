@@ -13,9 +13,9 @@ import RightBottomCorner from 'Img/RightBottomCorner.png';
 import * as T from 'types';
 
 interface BoardButtonStyleProps {
-  position: T.ButtonPosition;
-  put?: boolean;
-  flash?: boolean;
+  readonly position: T.ButtonPosition;
+  readonly put?: boolean;
+  readonly flash?: boolean;
 }
 
 export const urls: T.ButtonBackgroundUrls = {

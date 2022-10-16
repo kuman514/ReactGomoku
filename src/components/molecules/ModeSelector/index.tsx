@@ -1,10 +1,10 @@
 import { AppMode } from 'types';
 
 interface ModeSelectorProps {
-  id: string;
-  value: AppMode;
-  children?: string | JSX.Element;
-  defaultChecked?: boolean;
+  readonly id: string;
+  readonly value: AppMode;
+  readonly children?: string | JSX.Element;
+  readonly defaultChecked?: boolean;
 }
 
 function ModeSelector(props: ModeSelectorProps) {

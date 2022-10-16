@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 interface UIButtonProps {
-  color?: string;
-  disabled?: boolean;
-  width?: string;
+  readonly color?: string;
+  readonly disabled?: boolean;
+  readonly width?: string;
 }
 
 const UIButton = styled.button`

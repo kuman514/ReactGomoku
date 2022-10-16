@@ -6,9 +6,9 @@ import { StoreState } from 'store/StoreState';
 import { useSelector } from 'react-redux';
 
 interface BoardTileProps {
-  row: number;
-  col: number;
-  onClick: (row: number, col: number) => void;
+  readonly row: number;
+  readonly col: number;
+  readonly onClick: (row: number, col: number) => void;
 }
 
 const getPosition: (row: number, col: number) => T.ButtonPosition = (row, col) => {
@@ -45,17 +45,17 @@ const getStone: (who?: T.Player) => string = (who) => {
   }
 };
 
-function BoardTile(props: BoardTileProps) {
-  const position: T.ButtonPosition = getPosition(props.row, props.col);
+function BoardTile({ row, col, onClick }: BoardTileProps) {
+  const position: T.ButtonPosition = getPosition(row, col);
 
   const whoPutSelector: (state: StoreState) => T.Player = (state) => {
-    return state.tiles[props.row][props.col];
+    return state.tiles[row][col];
   };
   const whoPut: T.Player = useSelector(whoPutSelector);
   const stone: string = getStone(whoPut);
 
   const isPutSelector: (state: StoreState) => boolean = (state) => {
-    if (state.tiles[props.row][props.col] === T.Player.NONE) return false;
+    if (state.tiles[row][col] === T.Player.NONE) return false;
 
     return true;
   };
@@ -66,7 +66,7 @@ function BoardTile(props: BoardTileProps) {
 
     if (state.winner !== T.Player.NONE) return false;
 
-    if (state.tiles[props.row][props.col] !== T.Player.NONE) return false;
+    if (state.tiles[row][col] !== T.Player.NONE) return false;
 
     return true;
   };
@@ -74,12 +74,12 @@ function BoardTile(props: BoardTileProps) {
   const isDisabled: boolean = !isAvailable;
 
   const isTrackedSelector: (state: StoreState) => boolean = (state) => {
-    return state.winningTracks.has(`[${props.row},${props.col}]`);
+    return state.winningTracks.has(`[${row},${col}]`);
   };
   const isTracked: boolean = useSelector(isTrackedSelector);
 
   const onClickTile: () => void = () => {
-    props.onClick(props.row, props.col);
+    onClick(row, col);
   };
 
   return (
