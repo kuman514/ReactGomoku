@@ -7,18 +7,18 @@ interface ModeSelectorProps {
   readonly defaultChecked?: boolean;
 }
 
-function ModeSelector(props: ModeSelectorProps) {
+function ModeSelector({ id, value, children, defaultChecked }: ModeSelectorProps) {
   return (
     <>
       <input
         type="radio"
-        id={props.id}
+        id={id}
         name="mode"
-        value={props.value}
-        defaultChecked={props.defaultChecked}
+        value={value}
+        defaultChecked={defaultChecked}
       />
       <label>
-        { props.children }
+        { children }
       </label>
     </>
   );
