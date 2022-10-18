@@ -1,13 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { initState, StoreState } from 'store/StoreState';
+import { StoreState } from 'store/StoreState';
 import { AppMode, Player } from 'types';
-
-interface WinnerEffectState {
-  winner: Player,
-  mode: string
-};
 
 const WinnerEffectElement = styled.div`
   position: fixed;
@@ -57,30 +52,24 @@ const WinnerEffectContentElement = styled.div`
 `;
 
 function WinnerEffect() {
-  const selector = (state: StoreState = initState): WinnerEffectState => {
-    return {
-      winner: state.winner,
-      mode: state.mode
-    }
-  };
-  const status = useSelector(selector);
-  const renderWinnerEffect = () => {
-    if (status.mode === AppMode.GAME && status.winner !== Player.NONE) {
-      return (
-        <WinnerEffectElement>
-          <WinnerEffectContentElement>
-            <span>
-              Player { status.winner } Wins!
-            </span>
-          </WinnerEffectContentElement>
-        </WinnerEffectElement>
-      );
-    } else {
-      return null;
-    }
-  };
+  const winnerSelector: (state: StoreState) => Player = (state) => (state.winner);
+  const winner: Player = useSelector(winnerSelector);
+  const modeSelector: (state: StoreState) => AppMode = (state) => (state.mode);
+  const mode: AppMode = useSelector(modeSelector);
 
-  return renderWinnerEffect();
+  if (mode === AppMode.GAME && winner !== Player.NONE) {
+    return (
+      <WinnerEffectElement>
+        <WinnerEffectContentElement>
+          <span>
+            Player { winner } Wins!
+          </span>
+        </WinnerEffectContentElement>
+      </WinnerEffectElement>
+    );
+  }
+
+  return null;
 }
 
 export default WinnerEffect;
