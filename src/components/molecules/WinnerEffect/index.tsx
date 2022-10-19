@@ -52,9 +52,9 @@ const WinnerEffectContentElement = styled.div`
 `;
 
 function WinnerEffect() {
-  const winnerSelector: (state: StoreState) => Player = (state) => (state.winner);
+  const winnerSelector: (state: StoreState) => Player = ({ winner }) => winner;
   const winner: Player = useSelector(winnerSelector);
-  const modeSelector: (state: StoreState) => AppMode = (state) => (state.mode);
+  const modeSelector: (state: StoreState) => AppMode = ({ mode }) => mode;
   const mode: AppMode = useSelector(modeSelector);
 
   if (mode === AppMode.GAME && winner !== Player.NONE) {
