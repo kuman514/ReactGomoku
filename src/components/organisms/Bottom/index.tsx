@@ -2,14 +2,10 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { store } from 'store/Store';
-import { StoreState, initState } from 'store/StoreState';
+import { StoreState } from 'store/StoreState';
 import Score from 'components/atoms/Score';
 import ReplayBottom from 'components/molecules/ReplayBottom';
 import { AppMode } from 'types';
-
-interface BottomState {
-  mode: AppMode;
-}
 
 const BottomElement = styled.div`
   & * {
@@ -50,12 +46,12 @@ function BottomType(mode: AppMode) {
             Reset
           </BottomButtonElement>
           <BottomButtonElement onClick={() => {
-            const status: StoreState = store.getState();
+            const { history }: StoreState = store.getState();
 
             const replayData = {
               width: 19,
               height: 19,
-              history: status.history
+              history,
             };
 
             const file: HTMLAnchorElement = document.createElement('a');
@@ -78,16 +74,12 @@ function BottomType(mode: AppMode) {
 }
 
 function Bottom() {
-  const selector = (state: StoreState = initState): BottomState => {
-    return {
-      mode: state.mode
-    };
-  };
-  const status = useSelector(selector);
+  const modeSelector: (state: StoreState) => AppMode = ({ mode }) => mode;
+  const mode: AppMode = useSelector(modeSelector);
 
   return (
     <BottomElement>
-      {BottomType(status.mode)}
+      {BottomType(mode)}
     </BottomElement>
   );
 }
