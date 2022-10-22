@@ -1,3 +1,4 @@
+import React, { ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import ModeSelector from 'components/molecules/ModeSelector';
@@ -13,7 +14,7 @@ function ModeChanger() {
   const dispatch = useDispatch();
 
   return (
-    <ModeChangerElement onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+    <ModeChangerElement onChange={(event: ChangeEvent<HTMLInputElement>) => {
       dispatch({
         type: 'MODECHANGE',
         payload: event.target.value
