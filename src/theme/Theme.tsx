@@ -1,13 +1,13 @@
 const THEME_BUTTONS = {
-  'default': ['⚫', '⚪'],
-  'halloween': ['🟣', '🟠'],
-  'winter': ['🔴', '🟢']
+  default: ['⚫', '⚪'],
+  halloween: ['🟣', '🟠'],
+  winter: ['🔴', '🟢'],
 };
 
 const THEME_TITLES = {
-  'default': 'React Gomoku',
-  'halloween': 'Halloween Gomoku',
-  'winter': 'Holiday Gomoku'
+  default: 'React Gomoku',
+  halloween: 'Halloween Gomoku',
+  winter: 'Holiday Gomoku'
 };
 
 const THEME_INDEX = (() => {
