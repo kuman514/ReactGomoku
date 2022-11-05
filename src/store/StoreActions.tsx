@@ -1,3 +1,8 @@
+/* eslint-disable no-empty-function */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-useless-constructor */
+/* eslint-disable lines-between-class-members */
+
 import { Action } from 'redux';
 import { AppMode } from 'types';
 

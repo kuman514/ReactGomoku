@@ -5,9 +5,10 @@ import {
   putStone,
   undo,
   resetBoard,
-  isAvailableMode
+  isAvailableMode,
 } from './StoreProcess';
 
+// eslint-disable-next-line default-param-last
 export const store = createStore((state: StoreState = initState, action: StoreActions) => {
   /*
     1. PUT TYPE ACTION (coords: [row, col])
@@ -40,7 +41,7 @@ export const store = createStore((state: StoreState = initState, action: StoreAc
     case 'MODECHANGE':
       return {
         ...resetBoard(state),
-        mode: isAvailableMode(action.payload) ? action.payload : state.mode
+        mode: isAvailableMode(action.payload) ? action.payload : state.mode,
       };
     default:
       return state;

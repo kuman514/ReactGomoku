@@ -7,7 +7,7 @@ const THEME_BUTTONS = {
 const THEME_TITLES = {
   default: 'React Gomoku',
   halloween: 'Halloween Gomoku',
-  winter: 'Holiday Gomoku'
+  winter: 'Holiday Gomoku',
 };
 
 const THEME_INDEX = (() => {
@@ -19,7 +19,9 @@ const THEME_INDEX = (() => {
   if (month === 9 && day === 31) {
     // October 31
     return 'halloween';
-  } else if ((month === 0 && day === 1) || (month === 11 && day === 25)) {
+  }
+
+  if ((month === 0 && day === 1) || (month === 11 && day === 25)) {
     // January 1 or December 25
     return 'winter';
   }

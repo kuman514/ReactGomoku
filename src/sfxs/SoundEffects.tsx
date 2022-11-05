@@ -3,11 +3,12 @@ const SFXs = {
   player2PutSFX: document.querySelector('#player2PutSFX'),
   resetSFX: document.querySelector('#resetSFX'),
   undoSFX: document.querySelector('#undoSFX'),
-  resultSFX: document.querySelector('#resultSFX')
-}
+  resultSFX: document.querySelector('#resultSFX'),
+};
 
 function stopSFX(wav: Element | null): void {
   (wav as HTMLAudioElement).pause();
+  // eslint-disable-next-line no-param-reassign
   (wav as HTMLAudioElement).currentTime = 0;
 }
 
@@ -40,6 +41,7 @@ export function playSFX(wavName: string): void {
       break;
     case 'RESULT':
       playWav(SFXs.resultSFX);
-      break;     
+      break;
+    default:
   }
 }

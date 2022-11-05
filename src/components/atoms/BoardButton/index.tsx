@@ -35,7 +35,7 @@ const BoardButton = styled.button`
   box-sizing: border-box;
   margin: 0;
   background-size: 100%;
-  color: ${({ put }: BoardButtonStyleProps) => put ? '#000000' : 'transparent'};
+  color: ${({ put }: BoardButtonStyleProps) => (put ? '#000000' : 'transparent')};
   background-image: url(${({ position }: BoardButtonStyleProps) => urls[position]});
 
   &:hover {
@@ -47,10 +47,9 @@ const BoardButton = styled.button`
     border: 3px solid red;
   }
 
-  animation: ${({ flash }: BoardButtonStyleProps) => flash
+  animation: ${({ flash }: BoardButtonStyleProps) => (flash
     ? 'FlashTrackedResult linear infinite 600ms'
-    : 'none'
-  };
+    : 'none')};
   @keyframes FlashTrackedResult {
     0% {
       opacity: 1;

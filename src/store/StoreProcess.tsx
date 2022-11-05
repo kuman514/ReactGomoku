@@ -14,13 +14,13 @@ function isInRange(row: number, col: number): boolean {
     return false;
   }
   return true;
-};
+}
 
 function getNewTiles(status: StoreState, row: number, col: number, player: Player): Player[][] {
-  const newTiles = Array.from({length: HEIGHT}, (_, i) => Array.from(status.tiles[i]));
+  const newTiles = Array.from({ length: HEIGHT }, (_, i) => Array.from(status.tiles[i]));
   newTiles[row][col] = player;
   return newTiles;
-};
+}
 
 function getNewPlayer(curPlayer: Player): Player {
   switch (curPlayer) {
@@ -31,7 +31,7 @@ function getNewPlayer(curPlayer: Player): Player {
     default:
       return 0;
   }
-};
+}
 
 function checkWinner(row: number, col: number, newTiles: Player[][]): [Player, number[][]] {
   const winner: Player = newTiles[row][col];
@@ -61,7 +61,7 @@ function checkWinner(row: number, col: number, newTiles: Player[][]): [Player, n
   }
 
   return [Player.NONE, []];
-};
+}
 
 export function putStone(status: StoreState, row: number, col: number): StoreState {
   if (status.tiles[row][col] !== Player.NONE) {
@@ -92,13 +92,13 @@ export function putStone(status: StoreState, row: number, col: number): StoreSta
     tiles: newTiles,
     curPlayer: newPlayer,
     history: newHistory,
-    winner: winner,
+    winner,
     winningTracks: new Set<string>(
-      winningTracks.map((item) => `[${item[0]},${item[1]}]`)
+      winningTracks.map((item) => `[${item[0]},${item[1]}]`),
     ),
-    score: newScore
+    score: newScore,
   };
-};
+}
 
 export function undo(status: StoreState): StoreState {
   if (status.history.length === 0) {
@@ -128,22 +128,23 @@ export function undo(status: StoreState): StoreState {
     curPlayer: newPlayer,
     history: newHistory,
     winner: EMPTY,
-    winningTracks: new Set<string>()
+    winningTracks: new Set<string>(),
   };
-};
+}
 
 export function resetBoard(status: StoreState): StoreState {
   playSFX('RESET');
 
   return {
     ...status,
-    tiles: Array.from({length: HEIGHT}, () => Array.from({length: WIDTH}, () => Player.NONE)),
+    tiles: Array.from({ length: HEIGHT }, () => Array.from({ length: WIDTH }, () => Player.NONE)),
     curPlayer: Player.PLAYER1,
+    // eslint-disable-next-line no-array-constructor
     history: Array<number[]>(),
     winner: Player.NONE,
-    winningTracks: new Set<string>()
+    winningTracks: new Set<string>(),
   };
-};
+}
 
 export function isAvailableMode(modeName: string) {
   switch (modeName) {
