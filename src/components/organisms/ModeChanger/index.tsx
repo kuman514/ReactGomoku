@@ -14,21 +14,23 @@ function ModeChanger() {
   const dispatch = useDispatch();
 
   return (
-    <ModeChangerElement onChange={(event: ChangeEvent<HTMLInputElement>) => {
-      dispatch({
-        type: 'MODECHANGE',
-        payload: event.target.value
-      });
-    }}>
+    <ModeChangerElement
+      onChange={(event: ChangeEvent<HTMLInputElement>) => {
+        dispatch({
+          type: 'MODECHANGE',
+          payload: event.target.value,
+        });
+      }}
+    >
       <ModeSelector
-        id='game'
+        id="game"
         value={AppMode.GAME}
         defaultChecked
       >
         Game
       </ModeSelector>
       <ModeSelector
-        id='replay'
+        id="replay"
         value={AppMode.REPLAY}
       >
         Replay

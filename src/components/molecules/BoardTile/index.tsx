@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+import React from 'react';
 import BoardButton from 'components/atoms/BoardButton';
 import { themeButtons } from 'theme/Theme';
 
@@ -20,6 +22,7 @@ const getPosition: (row: number, col: number) => T.ButtonPosition = (row, col) =
     case T.Edges.BottomEdge:
       finalRow = 2;
       break;
+    default:
   }
 
   let finalCol: number = 1;
@@ -30,11 +33,12 @@ const getPosition: (row: number, col: number) => T.ButtonPosition = (row, col) =
     case T.Edges.RightEdge:
       finalCol = 2;
       break;
+    default:
   }
 
   const finalIndex = finalRow * 3 + finalCol;
   return T.ButtonPositionIndex[finalIndex];
-}
+};
 
 const getStone: (who?: T.Player) => string = (who) => {
   switch (who) {
@@ -48,9 +52,7 @@ const getStone: (who?: T.Player) => string = (who) => {
 function BoardTile({ row, col, onClick }: BoardTileProps) {
   const position: T.ButtonPosition = getPosition(row, col);
 
-  const whoPutSelector: (state: StoreState) => T.Player = (state) => {
-    return state.tiles[row][col];
-  };
+  const whoPutSelector: (state: StoreState) => T.Player = (state) => state.tiles[row][col];
   const whoPut: T.Player = useSelector(whoPutSelector);
   const stone: string = getStone(whoPut);
 
@@ -73,9 +75,7 @@ function BoardTile({ row, col, onClick }: BoardTileProps) {
   const isAvailable: boolean = useSelector(isAvailableSelector);
   const isDisabled: boolean = !isAvailable;
 
-  const isTrackedSelector: (state: StoreState) => boolean = (state) => {
-    return state.winningTracks.has(`[${row},${col}]`);
-  };
+  const isTrackedSelector: (state: StoreState) => boolean = (state) => state.winningTracks.has(`[${row},${col}]`);
   const isTracked: boolean = useSelector(isTrackedSelector);
 
   const onClickTile: () => void = () => {

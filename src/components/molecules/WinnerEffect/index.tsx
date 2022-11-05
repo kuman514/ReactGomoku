@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -62,7 +63,11 @@ function WinnerEffect() {
       <WinnerEffectElement>
         <WinnerEffectContentElement>
           <span>
-            Player { winner } Wins!
+            Player
+            {' '}
+            { winner }
+            {' '}
+            Wins!
           </span>
         </WinnerEffectContentElement>
       </WinnerEffectElement>

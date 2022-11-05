@@ -22,7 +22,9 @@ function Score() {
   return (
     <ScoreElement>
       <span>
-        {p1Score} - {p2Score}
+        {p1Score}
+        {' - '}
+        {p2Score}
       </span>
     </ScoreElement>
   );

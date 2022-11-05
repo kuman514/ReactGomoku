@@ -10,14 +10,18 @@ function GameBottom() {
   return (
     <>
       <Score />
-      <BottomButtonElement onClick={() => {
-        dispatch({ type: 'UNDO' });
-      }}>
+      <BottomButtonElement
+        onClick={() => {
+          dispatch({ type: 'UNDO' });
+        }}
+      >
         Undo
       </BottomButtonElement>
-      <BottomButtonElement onClick={() => {
-        dispatch({ type: 'RESET' });
-      }}>
+      <BottomButtonElement
+        onClick={() => {
+          dispatch({ type: 'RESET' });
+        }}
+      >
         Reset
       </BottomButtonElement>
       <BottomButtonElement onClick={() => {
@@ -30,11 +34,12 @@ function GameBottom() {
         };
 
         const file: HTMLAnchorElement = document.createElement('a');
-        const fileBlob: Blob = new Blob([JSON.stringify(replayData)], {type: 'json'});
+        const fileBlob: Blob = new Blob([JSON.stringify(replayData)], { type: 'json' });
         file.href = URL.createObjectURL(fileBlob);
         file.download = 'replay.json';
         file.click();
-      }}>
+      }}
+      >
         Save As Replay
       </BottomButtonElement>
     </>

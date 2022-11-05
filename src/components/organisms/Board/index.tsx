@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
@@ -43,19 +45,16 @@ function Board() {
     <BoardElement>
       <TilesElement>
         {
-          Array.from({length: 19}, () => Array.from({length: 19}))
-            .map((line, i) => {
-              return line.map((_, j) => {
-                return (
-                  <BoardTile
-                    key={`r${i}c${j}`}
-                    row={i}
-                    col={j}
-                    onClick={onClickButton}
-                  />
-                );
-              });
-            })
+          Array.from({ length: 19 }, () => Array.from({ length: 19 }))
+            .map((line, i) => line.map((_, j) => (
+              <BoardTile
+                // eslint-disable-next-line react/no-array-index-key
+                key={`r${i}c${j}`}
+                row={i}
+                col={j}
+                onClick={onClickButton}
+              />
+            )))
         }
       </TilesElement>
     </BoardElement>

@@ -22,7 +22,7 @@ function ReplayBottom() {
   const [status, setStatus] = useState({
     history: Array<number[]>(),
     curTrack: 0,
-    maxTrack: 0
+    maxTrack: 0,
   });
 
   const loadReplay = (files: FileList): void => {
@@ -46,7 +46,7 @@ function ReplayBottom() {
       setStatus({
         history: result.history,
         curTrack: 0,
-        maxTrack: result.history.length
+        maxTrack: result.history.length,
       });
     });
 
@@ -62,7 +62,7 @@ function ReplayBottom() {
     setStatus({
       history: status.history,
       curTrack: status.curTrack - 1,
-      maxTrack: status.history.length
+      maxTrack: status.history.length,
     });
   };
 
@@ -73,13 +73,13 @@ function ReplayBottom() {
 
     dispatch({
       type: 'PUT',
-      payload: status.history[status.curTrack]
+      payload: status.history[status.curTrack],
     });
 
     setStatus({
       history: status.history,
       curTrack: status.curTrack + 1,
-      maxTrack: status.history.length
+      maxTrack: status.history.length,
     });
   };
 
@@ -97,8 +97,8 @@ function ReplayBottom() {
           if ((event.target as HTMLInputElement).files) {
             loadReplay((event.target as HTMLInputElement).files as FileList);
           }
-        }
-      }/>
+        }}
+      />
       <BottomButtonElement onClick={onClickPrev}>
         Prev
       </BottomButtonElement>

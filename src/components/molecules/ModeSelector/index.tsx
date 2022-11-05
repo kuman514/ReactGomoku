@@ -1,3 +1,6 @@
+/* eslint-disable react/require-default-props */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React from 'react';
 import { AppMode } from 'types';
 
 interface ModeSelectorProps {
@@ -7,7 +10,9 @@ interface ModeSelectorProps {
   readonly defaultChecked?: boolean;
 }
 
-function ModeSelector({ id, value, children, defaultChecked }: ModeSelectorProps) {
+function ModeSelector({
+  id, value, children, defaultChecked,
+}: ModeSelectorProps) {
   return (
     <>
       <input

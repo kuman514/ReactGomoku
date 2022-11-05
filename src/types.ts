@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-shadow */
 export enum ButtonPosition {
   LeftTopCorner = 'LEFT_TOP_CORNER',
   TopEdge = 'TOP_EDGE',
@@ -8,7 +10,7 @@ export enum ButtonPosition {
   LeftBottomCorner = 'LEFT_BOTTOM_CORNER',
   BottomEdge = 'BOTTOM_EDGE',
   RightBottomCorner = 'RIGHT_BOTTOM_CORNER',
-};
+}
 
 export const ButtonPositionIndex = [
   ButtonPosition.LeftTopCorner,
@@ -29,15 +31,15 @@ export enum Edges {
   RightEdge = 18,
   TopEdge = 0,
   BottomEdge = 18,
-};
+}
 
 export enum AppMode {
   GAME = 'GAME',
   REPLAY = 'REPLAY',
-};
+}
 
 export enum Player {
   NONE = 0,
   PLAYER1 = 1,
   PLAYER2 = 2,
-};
+}

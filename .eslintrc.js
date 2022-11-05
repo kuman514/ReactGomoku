@@ -47,5 +47,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'max-classes-per-file': 'off',
     'no-plusplus': 'off',
+    'no-array-constructor': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
   },
 };
