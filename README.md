@@ -1,6 +1,6 @@
 # ReactGomoku
 `React + TypeScript`로 만든, [고모쿠 룰](https://github.com/kuman514/ReactGomoku#gomoku-rule-%EA%B3%A0%EB%AA%A8%EC%BF%A0-%EB%A3%B0) 오목 앱.
-([앱 사용해보기](https://kuman514.github.io/ReactGomoku/))
+([앱 사용해보기](https://react-gomoku-kuman514.vercel.app/))
 
 # Objective (목적)
 - 가족들과 태블릿으로 오목 게임을 즐기고자 하는데, 가족이 쓰는 태블릿에는 오목 앱을 설치할 여유가 없습니다.
@@ -53,6 +53,7 @@
 - 10-07-2022: 아토믹 디자인 패턴 적용
 - 10-26-2022: 코드 정리 후 적용
 - 11-07-2022: 프로젝트에 ESLint 적용
+- 11-11-2022: Vercel로 앱 페이지를 옮긺
 
 # Issues (오류)
 - 10-11-2021: ~~모바일 브라우저에서 바둑판이 제대로 표시되지 않는 문제~~ (해결 완료)
