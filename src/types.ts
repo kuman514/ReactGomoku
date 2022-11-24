@@ -43,3 +43,10 @@ export enum Player {
   PLAYER1 = 1,
   PLAYER2 = 2,
 }
+
+export enum ActionKey {
+  PUT = 'PUT',
+  UNDO = 'UNDO',
+  RESET = 'RESET',
+  MODECHANGE = 'MODECHANGE',
+}

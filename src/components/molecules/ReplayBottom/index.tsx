@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { ActionKey } from 'types';
 
 const BottomButtonElement = styled.button`
   all: unset;
@@ -42,7 +43,7 @@ function ReplayBottom() {
         return;
       }
 
-      dispatch({ type: 'RESET' });
+      dispatch({ type: ActionKey.RESET });
       setStatus({
         history: result.history,
         curTrack: 0,
@@ -58,7 +59,7 @@ function ReplayBottom() {
       return;
     }
 
-    dispatch({ type: 'UNDO' });
+    dispatch({ type: ActionKey.UNDO });
     setStatus({
       history: status.history,
       curTrack: status.curTrack - 1,
@@ -72,7 +73,7 @@ function ReplayBottom() {
     }
 
     dispatch({
-      type: 'PUT',
+      type: ActionKey.PUT,
       payload: status.history[status.curTrack],
     });
 

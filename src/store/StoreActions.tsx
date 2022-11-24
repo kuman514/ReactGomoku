@@ -4,27 +4,27 @@
 /* eslint-disable lines-between-class-members */
 
 import { Action } from 'redux';
-import { AppMode } from 'types';
+import { AppMode, ActionKey } from 'types';
 
 // PUT
 class PutTileAction implements Action {
-  readonly type = 'PUT';
+  readonly type = ActionKey.PUT;
   constructor(public payload: number[]) {}
 }
 
 // UNDO
 class UndoAction implements Action {
-  readonly type = 'UNDO';
+  readonly type = ActionKey.UNDO;
 }
 
 // RESET
 class ResetAction implements Action {
-  readonly type = 'RESET';
+  readonly type = ActionKey.RESET;
 }
 
 // MODECHANGE
 class ModeChangeAction implements Action {
-  readonly type = 'MODECHANGE';
+  readonly type = ActionKey.MODECHANGE;
   constructor(public payload: AppMode) {}
 }
 

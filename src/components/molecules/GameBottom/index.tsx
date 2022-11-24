@@ -4,6 +4,7 @@ import { store } from 'store/Store';
 import BottomButtonElement from 'components/atoms/BottomButtonElement';
 import Score from 'components/atoms/Score';
 import { StoreState } from 'store/StoreState';
+import { ActionKey } from 'types';
 
 function GameBottom() {
   const dispatch = useDispatch();
@@ -12,14 +13,14 @@ function GameBottom() {
       <Score />
       <BottomButtonElement
         onClick={() => {
-          dispatch({ type: 'UNDO' });
+          dispatch({ type: ActionKey.UNDO });
         }}
       >
         Undo
       </BottomButtonElement>
       <BottomButtonElement
         onClick={() => {
-          dispatch({ type: 'RESET' });
+          dispatch({ type: ActionKey.RESET });
         }}
       >
         Reset

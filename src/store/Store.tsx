@@ -7,6 +7,7 @@ import {
   resetBoard,
   isAvailableMode,
 } from './StoreProcess';
+import { ActionKey } from 'types';
 
 // eslint-disable-next-line default-param-last
 export const store = createStore((state: StoreState = initState, action: StoreActions) => {
@@ -32,13 +33,13 @@ export const store = createStore((state: StoreState = initState, action: StoreAc
       - Mode change resets the whole board
   */
   switch (action.type) {
-    case 'PUT':
+    case ActionKey.PUT:
       return putStone(state, action.payload[0], action.payload[1]);
-    case 'UNDO':
+    case ActionKey.UNDO:
       return undo(state);
-    case 'RESET':
+    case ActionKey.RESET:
       return resetBoard(state);
-    case 'MODECHANGE':
+    case ActionKey.MODECHANGE:
       return {
         ...resetBoard(state),
         mode: isAvailableMode(action.payload) ? action.payload : state.mode,

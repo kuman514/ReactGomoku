@@ -2,7 +2,7 @@ import React, { ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import ModeSelector from 'components/molecules/ModeSelector';
-import { AppMode } from 'types';
+import { ActionKey, AppMode } from 'types';
 
 const ModeChangerElement = styled.div`
   & * {
@@ -17,7 +17,7 @@ function ModeChanger() {
     <ModeChangerElement
       onChange={(event: ChangeEvent<HTMLInputElement>) => {
         dispatch({
-          type: 'MODECHANGE',
+          type: ActionKey.MODECHANGE,
           payload: event.target.value,
         });
       }}

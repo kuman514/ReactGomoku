@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import BoardTile from 'components/molecules/BoardTile';
+import { ActionKey } from 'types';
 
 const BoardElement = styled.div`
   width: 98vw;
@@ -36,7 +37,7 @@ function Board() {
     if (Number.isNaN(row) || Number.isNaN(col)) return;
 
     dispatch({
-      type: 'PUT',
+      type: ActionKey.PUT,
       payload: [row, col],
     });
   };
