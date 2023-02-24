@@ -18,7 +18,9 @@
 - ~~`styled-components`를 이용하여 각 컴포넌트마다 하나의 TypeScript 파일로 관리하기.~~(완료)
 - ~~`Atomic Design Pattern`을 이용하여 보다 체계적인 컴포넌트 구조 만들기.~~(완료)
 - ~~`ESLint` 적용하기~~(완료)
-- `Next.js` + `CircleCI` + `Vercel`을 이용하여 배포 자동화 시도해보기.
+- ~~`Next.js` + `CircleCI` + `Vercel`을 이용하여 배포 자동화 시도해보기.~~ (취소. 배포 자동화는 Vercel만으로도 충분하다는 것을 다른 프로젝트에서 깨달음.)
+- 번들러 `Vite` 적용하기. (번들링 속도 향상 목적.)
+- 상태관리 `Zustand` 적용하기. (스토어 변경이 번거로운 Redux를 대체할 목적.)
 
 # Gomoku Rule (고모쿠 룰)
 - 흑색(Player 1)이 먼저 시작하며, 백색(Player 2)과 번갈아가며 바둑돌을 둡니다.
