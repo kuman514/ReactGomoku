@@ -91,7 +91,8 @@ module.exports = {
         ],
         'func-style': [
           'error',
-          'expression',
+          'declaration',
+          { "allowArrowFunctions": true },
         ],
         'func-names': [
           'error',
@@ -113,6 +114,12 @@ module.exports = {
           {
             devDependencies: true,
           },
+        ],
+        '@typescript-eslint/no-inferrable-types': [
+          'off',
+        ],
+        'no-array-constructor': [
+          'off',
         ],
       },
     },
