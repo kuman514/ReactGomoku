@@ -28,6 +28,11 @@
 - 한 줄에 6개 이상(즉, 6목 이상의 장목을) 둘 수 있으나, 이 경우 승리로 인정되지 않습니다.
 - 정확히 5목을 먼저 한 줄 이루는 쪽이 승리합니다.
 
+# Tech Docs (기술적 문서)
+- [모듈 경로 수정하기](https://github.com/kuman514/ReactGomoku/blob/main/docs/PROGRESS_path.md)
+- [Yarn Berry 적용하기](https://github.com/kuman514/ReactGomoku/blob/main/docs/PROGRESS_yarn-berry.md)
+- [Vite 적용하기](https://github.com/kuman514/ReactGomoku/blob/main/docs/PROGRESS_vite.md)
+
 # Source (출처)
 - 효과음: NES Gomoku Narabe Renju
 
@@ -57,8 +62,9 @@
 - Oct-26-2022: 코드 정리 후 적용
 - Nov-07-2022: 프로젝트에 ESLint 적용
 - Nov-11-2022: Vercel로 앱 페이지를 옮긺
-- Feb-25-2023: `create-react-app`을 eject 후 `npm` -> `yarn`으로 패키지 매니저 변경.
-- Feb-25-2023 (2): `webpack` -> `vite`로 번들러 변경.
+- Feb-25-2023: `create-react-app`을 eject 후 `npm` -> `yarn`으로 패키지 매니저 변경
+- Feb-25-2023 (2): `webpack` -> `vite`로 번들러 변경
+- Feb-26-2023: `gh-pages` 제거
 
 # Issues (오류)
 - 10-11-2021: ~~모바일 브라우저에서 바둑판이 제대로 표시되지 않는 문제~~ (해결 완료)
