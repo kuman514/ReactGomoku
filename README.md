@@ -64,6 +64,7 @@
 - Nov-11-2022: Vercel로 앱 페이지를 옮긺
 - Feb-25-2023: `create-react-app`을 eject 후 `npm` -> `yarn`으로 패키지 매니저 변경
 - Feb-25-2023 (2): `webpack` -> `vite`로 번들러 변경
+- Feb-26-2023: `gh-pages` 제거
 
 # Issues (오류)
 - 10-11-2021: ~~모바일 브라우저에서 바둑판이 제대로 표시되지 않는 문제~~ (해결 완료)
