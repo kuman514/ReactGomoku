@@ -1,6 +1,7 @@
+import { playSFX } from '^/sfxs/SoundEffects';
+import { AppMode, Player } from '^/types';
+
 import { StoreState } from './StoreState';
-import { playSFX } from '../sfxs/SoundEffects';
-import { AppMode, Player } from 'types';
 
 const EMPTY: number = 0;
 const WIDTH: number = 19;

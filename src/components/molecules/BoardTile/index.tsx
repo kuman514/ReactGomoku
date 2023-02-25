@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import BoardButton from 'components/atoms/BoardButton';
-import { themeButtons } from 'theme/Theme';
-
-import * as T from 'types';
-import { StoreState } from 'store/StoreState';
 import { useSelector } from 'react-redux';
+
+import BoardButton from '^/components/atoms/BoardButton';
+import { themeButtons } from '^/theme/Theme';
+import * as T from '^/types';
+import { StoreState } from '^/store/StoreState';
 
 interface BoardTileProps {
   readonly row: number;

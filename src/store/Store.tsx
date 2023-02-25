@@ -1,4 +1,7 @@
 import { createStore } from 'redux';
+
+import { ActionKey } from '^/types';
+
 import { StoreState, initState } from './StoreState';
 import { StoreActions } from './StoreActions';
 import {
@@ -7,7 +10,6 @@ import {
   resetBoard,
   isAvailableMode,
 } from './StoreProcess';
-import { ActionKey } from 'types';
 
 // eslint-disable-next-line default-param-last
 export const store = createStore((state: StoreState = initState, action: StoreActions) => {

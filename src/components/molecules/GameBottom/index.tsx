@@ -1,10 +1,11 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { store } from 'store/Store';
-import BottomButtonElement from 'components/atoms/BottomButtonElement';
-import Score from 'components/atoms/Score';
-import { StoreState } from 'store/StoreState';
-import { ActionKey } from 'types';
+
+import { store } from '^/store/Store';
+import BottomButtonElement from '^/components/atoms/BottomButtonElement';
+import Score from '^/components/atoms/Score';
+import { StoreState } from '^/store/StoreState';
+import { ActionKey } from '^/types';
 
 function GameBottom() {
   const dispatch = useDispatch();

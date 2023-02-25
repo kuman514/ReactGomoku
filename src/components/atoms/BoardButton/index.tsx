@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 
-import LeftTopCorner from 'Img/LeftTopCorner.png';
-import TopEdge from 'Img/TopEdge.png';
-import RightTopCorner from 'Img/RightTopCorner.png';
-import LeftEdge from 'Img/LeftEdge.png';
-import InBoard from 'Img/InBoard.png';
-import RightEdge from 'Img/RightEdge.png';
-import LeftBottomCorner from 'Img/LeftBottomCorner.png';
-import BottomEdge from 'Img/BottomEdge.png';
-import RightBottomCorner from 'Img/RightBottomCorner.png';
+import LeftTopCorner from '^/Img/LeftTopCorner.png';
+import TopEdge from '^/Img/TopEdge.png';
+import RightTopCorner from '^/Img/RightTopCorner.png';
+import LeftEdge from '^/Img/LeftEdge.png';
+import InBoard from '^/Img/InBoard.png';
+import RightEdge from '^/Img/RightEdge.png';
+import LeftBottomCorner from '^/Img/LeftBottomCorner.png';
+import BottomEdge from '^/Img/BottomEdge.png';
+import RightBottomCorner from '^/Img/RightBottomCorner.png';
 
-import * as T from 'types';
+import * as T from '^/types';
 
 interface BoardButtonStyleProps {
   readonly position: T.ButtonPosition;

@@ -1,4 +1,4 @@
-import { AppMode, Player } from 'types';
+import { AppMode, Player } from '^/types';
 
 export interface StoreState {
   mode: AppMode;

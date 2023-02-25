@@ -2,8 +2,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { StoreState } from 'store/StoreState';
-import { AppMode, Player } from 'types';
+
+import { StoreState } from '^/store/StoreState';
+import { AppMode, Player } from '^/types';
 
 const WinnerEffectElement = styled.div`
   position: fixed;

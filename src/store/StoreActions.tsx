@@ -4,7 +4,8 @@
 /* eslint-disable lines-between-class-members */
 
 import { Action } from 'redux';
-import { AppMode, ActionKey } from 'types';
+
+import { AppMode, ActionKey } from '^/types';
 
 // PUT
 class PutTileAction implements Action {

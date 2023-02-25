@@ -1,8 +1,9 @@
 import React, { ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import ModeSelector from 'components/molecules/ModeSelector';
-import { ActionKey, AppMode } from 'types';
+
+import ModeSelector from '^/components/molecules/ModeSelector';
+import { ActionKey, AppMode } from '^/types';
 
 const ModeChangerElement = styled.div`
   & * {

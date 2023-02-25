@@ -3,8 +3,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
-import BoardTile from 'components/molecules/BoardTile';
-import { ActionKey } from 'types';
+import BoardTile from '^/components/molecules/BoardTile';
+import { ActionKey } from '^/types';
 
 const BoardElement = styled.div`
   width: 98vw;

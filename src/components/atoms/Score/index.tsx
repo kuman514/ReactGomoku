@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { initState, StoreState } from 'store/StoreState';
+
+import { initState, StoreState } from '^/store/StoreState';
 
 const ScoreElement = styled.div`
   margin-left: 10px;

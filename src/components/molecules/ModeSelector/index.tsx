@@ -1,7 +1,8 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import { AppMode } from 'types';
+
+import { AppMode } from '^/types';
 
 interface ModeSelectorProps {
   readonly id: string;

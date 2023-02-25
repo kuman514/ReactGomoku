@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { ActionKey } from 'types';
+
+import { ActionKey } from '^/types';
 
 const BottomButtonElement = styled.button`
   all: unset;
