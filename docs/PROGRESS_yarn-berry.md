@@ -9,4 +9,5 @@
 - `yarn`
 - `yarn dlx @yarnpkg/sdks vscode`
 - `yarn plugin import typescript`
+- 누락된 의존성 패키지 추가
 - `yarn start`, `yarn build`, `yarn preview`, `yarn lint`가 정상 작동하는지 확인

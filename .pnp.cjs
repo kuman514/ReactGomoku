@@ -63,6 +63,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-redux", "virtual:084cfc3bc28e0ef10d7c1bfe8f1e56fb49f98ba7c92f45bb396cc8be58b49e5516c34ee461fffc77e5a83823e293fda75ad9491dc644388d6e3a8d22fd98fd3f#npm:7.2.9"],\
             ["react-router-dom", "virtual:084cfc3bc28e0ef10d7c1bfe8f1e56fb49f98ba7c92f45bb396cc8be58b49e5516c34ee461fffc77e5a83823e293fda75ad9491dc644388d6e3a8d22fd98fd3f#npm:6.8.1"],\
             ["react-scripts", "virtual:084cfc3bc28e0ef10d7c1bfe8f1e56fb49f98ba7c92f45bb396cc8be58b49e5516c34ee461fffc77e5a83823e293fda75ad9491dc644388d6e3a8d22fd98fd3f#npm:4.0.3"],\
+            ["redux", "npm:4.2.1"],\
             ["styled-components", "virtual:084cfc3bc28e0ef10d7c1bfe8f1e56fb49f98ba7c92f45bb396cc8be58b49e5516c34ee461fffc77e5a83823e293fda75ad9491dc644388d6e3a8d22fd98fd3f#npm:5.3.6"],\
             ["typescript", "patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"],\
             ["vite", "virtual:084cfc3bc28e0ef10d7c1bfe8f1e56fb49f98ba7c92f45bb396cc8be58b49e5516c34ee461fffc77e5a83823e293fda75ad9491dc644388d6e3a8d22fd98fd3f#npm:3.2.5"],\
@@ -20353,6 +20354,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-redux", "virtual:084cfc3bc28e0ef10d7c1bfe8f1e56fb49f98ba7c92f45bb396cc8be58b49e5516c34ee461fffc77e5a83823e293fda75ad9491dc644388d6e3a8d22fd98fd3f#npm:7.2.9"],\
             ["react-router-dom", "virtual:084cfc3bc28e0ef10d7c1bfe8f1e56fb49f98ba7c92f45bb396cc8be58b49e5516c34ee461fffc77e5a83823e293fda75ad9491dc644388d6e3a8d22fd98fd3f#npm:6.8.1"],\
             ["react-scripts", "virtual:084cfc3bc28e0ef10d7c1bfe8f1e56fb49f98ba7c92f45bb396cc8be58b49e5516c34ee461fffc77e5a83823e293fda75ad9491dc644388d6e3a8d22fd98fd3f#npm:4.0.3"],\
+            ["redux", "npm:4.2.1"],\
             ["styled-components", "virtual:084cfc3bc28e0ef10d7c1bfe8f1e56fb49f98ba7c92f45bb396cc8be58b49e5516c34ee461fffc77e5a83823e293fda75ad9491dc644388d6e3a8d22fd98fd3f#npm:5.3.6"],\
             ["typescript", "patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"],\
             ["vite", "virtual:084cfc3bc28e0ef10d7c1bfe8f1e56fb49f98ba7c92f45bb396cc8be58b49e5516c34ee461fffc77e5a83823e293fda75ad9491dc644388d6e3a8d22fd98fd3f#npm:3.2.5"],\
