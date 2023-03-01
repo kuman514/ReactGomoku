@@ -21,7 +21,7 @@
 - ~~`Next.js` + `CircleCI` + `Vercel`을 이용하여 배포 자동화 시도해보기.~~ (취소. 배포 자동화는 Vercel만으로도 충분하다는 것을 다른 프로젝트에서 깨달음.)
 - ~~`npm` -> `yarn berry`로 옮기기.~~ (완료)
 - ~~번들러 `Vite` 적용하기. 번들링 속도 향상 목적.~~ (완료)
-- 상태관리 `Zustand` 적용하기. (스토어 변경이 번거로운 Redux를 대체할 목적.)
+- ~~상태관리 `Zustand` 적용하기. 스토어 변경이 번거로운 Redux를 대체할 목적.~~ (완료)
 
 # Gomoku Rule (고모쿠 룰)
 - 흑색(Player 1)이 먼저 시작하며, 백색(Player 2)과 번갈아가며 바둑돌을 둡니다.
@@ -32,6 +32,7 @@
 - [모듈 경로 수정하기](https://github.com/kuman514/ReactGomoku/blob/main/docs/PROGRESS_path.md)
 - [Yarn Berry 적용하기](https://github.com/kuman514/ReactGomoku/blob/main/docs/PROGRESS_yarn-berry.md)
 - [Vite 적용하기](https://github.com/kuman514/ReactGomoku/blob/main/docs/PROGRESS_vite.md)
+- [Redux를 버리고 Zustand를 적용한 이유](https://github.com/kuman514/ReactGomoku/blob/main/docs/WHY_zustand.md)
 
 # Source (출처)
 - 효과음: NES Gomoku Narabe Renju
@@ -65,6 +66,7 @@
 - Feb-25-2023: `create-react-app`을 eject 후 `npm` -> `yarn`으로 패키지 매니저 변경
 - Feb-25-2023 (2): `webpack` -> `vite`로 번들러 변경
 - Feb-26-2023: `gh-pages` 제거
+- Mar-01-2023: `zustand` 적용 및 `redux` 제거
 
 # Issues (오류)
 - 10-11-2021: ~~모바일 브라우저에서 바둑판이 제대로 표시되지 않는 문제~~ (해결 완료)
