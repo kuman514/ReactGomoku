@@ -90,7 +90,7 @@ function checkWinner(row: number, col: number, newTiles: Player[][]): [Player, n
   return [Player.NONE, []];
 }
 
-const boardStore = create<BoardStore & BoardAction>((set) => ({
+const useBoardStore = create<BoardStore & BoardAction>((set) => ({
   ...getInitState(),
   put: ([row, col]: number[]) => set((status) => {
     if (status.tiles[row][col] !== Player.NONE) {
@@ -165,4 +165,4 @@ const boardStore = create<BoardStore & BoardAction>((set) => ({
   }),
 }));
 
-export default boardStore;
+export default useBoardStore;

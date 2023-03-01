@@ -10,7 +10,7 @@ export interface ModeAction {
   changeMode: (newMode: AppMode) => void;
 }
 
-const modeStore = create<ModeStore & ModeAction>((set) => ({
+const useModeStore = create<ModeStore & ModeAction>((set) => ({
   mode: AppMode.GAME,
   changeMode: (newMode: AppMode) => set((status) => ({
     ...status,
@@ -18,4 +18,4 @@ const modeStore = create<ModeStore & ModeAction>((set) => ({
   })),
 }));
 
-export default modeStore;
+export default useModeStore;
