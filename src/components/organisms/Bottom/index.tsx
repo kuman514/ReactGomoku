@@ -1,12 +1,10 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
-import { StoreState } from '^/store/StoreState';
 import ReplayBottom from '^/components/molecules/ReplayBottom';
 import { AppMode } from '^/types';
 import GameBottom from '^/components/molecules/GameBottom';
+import useModeStore from '^/store/mode';
 
 const BottomElement = styled.div`
   & * {
@@ -30,9 +28,7 @@ function BottomType(mode: AppMode) {
 }
 
 function Bottom() {
-  const modeSelector: (state: StoreState) => AppMode = ({ mode }) => mode;
-  const mode: AppMode = useSelector(modeSelector);
-
+  const { mode } = useModeStore();
   return (
     <BottomElement>
       {BottomType(mode)}

@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from 'zustand';
 
 import { playSFX } from '^/sfxs/SoundEffects';
 import { Player } from '^/types';
@@ -109,6 +109,7 @@ const useBoardStore = create<BoardStore & BoardAction>((set) => ({
 
     if (winner !== EMPTY) {
       playSFX('RESULT');
+      newScore[winner - 1]++;
     } else {
       playSFX(`P${status.curPlayer}PUT`);
     }
@@ -161,6 +162,7 @@ const useBoardStore = create<BoardStore & BoardAction>((set) => ({
     return {
       ...status,
       ...getInitState(),
+      score: status.score,
     };
   }),
 }));

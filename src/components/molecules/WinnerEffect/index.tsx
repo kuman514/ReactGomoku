@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
-import { StoreState } from '^/store/StoreState';
+import useBoardStore from '^/store/board';
+import useModeStore from '^/store/mode';
 import { AppMode, Player } from '^/types';
 
 const WinnerEffectElement = styled.div`
@@ -54,10 +53,8 @@ const WinnerEffectContentElement = styled.div`
 `;
 
 function WinnerEffect() {
-  const winnerSelector: (state: StoreState) => Player = ({ winner }) => winner;
-  const winner: Player = useSelector(winnerSelector);
-  const modeSelector: (state: StoreState) => AppMode = ({ mode }) => mode;
-  const mode: AppMode = useSelector(modeSelector);
+  const { winner } = useBoardStore();
+  const { mode } = useModeStore();
 
   if (mode === AppMode.GAME && winner !== Player.NONE) {
     return (

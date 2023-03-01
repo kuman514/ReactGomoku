@@ -1,10 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import BoardTile from '^/components/molecules/BoardTile';
-import { ActionKey } from '^/types';
+import useBoardStore from '^/store/board';
 
 const BoardElement = styled.div`
   width: 98vw;
@@ -31,15 +30,11 @@ const TilesElement = styled.div`
 `;
 
 function Board() {
-  const dispatch = useDispatch();
+  const { put } = useBoardStore();
 
   const onClickButton: (row: number, col: number) => void = (row, col) => {
     if (Number.isNaN(row) || Number.isNaN(col)) return;
-
-    dispatch({
-      type: ActionKey.PUT,
-      payload: [row, col],
-    });
+    put([row, col]);
   };
 
   return (

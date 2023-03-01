@@ -1,11 +1,10 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
-import { useSelector } from 'react-redux';
 
 import BoardButton from '^/components/atoms/BoardButton';
 import { themeButtons } from '^/theme/Theme';
 import * as T from '^/types';
-import { StoreState } from '^/store/StoreState';
+import useBoardStore from '^/store/board';
+import useModeStore from '^/store/mode';
 
 interface BoardTileProps {
   readonly row: number;
@@ -52,31 +51,16 @@ const getStone: (who?: T.Player) => string = (who) => {
 function BoardTile({ row, col, onClick }: BoardTileProps) {
   const position: T.ButtonPosition = getPosition(row, col);
 
-  const whoPutSelector: (state: StoreState) => T.Player = (state) => state.tiles[row][col];
-  const whoPut: T.Player = useSelector(whoPutSelector);
+  const { tiles, winner, winningTracks } = useBoardStore();
+  const { mode } = useModeStore();
+
+  const whoPut: T.Player = tiles[row][col];
   const stone: string = getStone(whoPut);
 
-  const isPutSelector: (state: StoreState) => boolean = (state) => {
-    if (state.tiles[row][col] === T.Player.NONE) return false;
-
-    return true;
-  };
-  const isPut: boolean = useSelector(isPutSelector);
-
-  const isAvailableSelector: (state: StoreState) => boolean = (state) => {
-    if (state.mode !== T.AppMode.GAME) return false;
-
-    if (state.winner !== T.Player.NONE) return false;
-
-    if (state.tiles[row][col] !== T.Player.NONE) return false;
-
-    return true;
-  };
-  const isAvailable: boolean = useSelector(isAvailableSelector);
+  const isPut: boolean = whoPut !== T.Player.NONE;
+  const isAvailable: boolean = mode === T.AppMode.GAME && winner === T.Player.NONE && !isPut;
   const isDisabled: boolean = !isAvailable;
-
-  const isTrackedSelector: (state: StoreState) => boolean = (state) => state.winningTracks.has(`[${row},${col}]`);
-  const isTracked: boolean = useSelector(isTrackedSelector);
+  const isTracked: boolean = winningTracks.has(`[${row},${col}]`);
 
   const onClickTile: () => void = () => {
     onClick(row, col);
