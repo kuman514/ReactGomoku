@@ -1,9 +1,10 @@
 import React, { ChangeEvent } from 'react';
-import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import ModeSelector from '^/components/molecules/ModeSelector';
-import { ActionKey, AppMode } from '^/types';
+import useBoardStore from '^/store/board';
+import useModeStore from '^/store/mode';
+import { AppMode } from '^/types';
 
 const ModeChangerElement = styled.div`
   & * {
@@ -12,15 +13,21 @@ const ModeChangerElement = styled.div`
 `;
 
 function ModeChanger() {
-  const dispatch = useDispatch();
+  const { reset } = useBoardStore();
+  const { changeMode } = useModeStore();
 
   return (
     <ModeChangerElement
       onChange={(event: ChangeEvent<HTMLInputElement>) => {
-        dispatch({
-          type: ActionKey.MODECHANGE,
-          payload: event.target.value,
-        });
+        if (
+          event.target.value !== AppMode.GAME
+          && event.target.value !== AppMode.REPLAY
+        ) {
+          return;
+        }
+
+        reset();
+        changeMode(event.target.value);
       }}
     >
       <ModeSelector

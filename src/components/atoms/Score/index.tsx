@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-
-import { initState, StoreState } from '^/store/StoreState';
+import useBoardStore from '^/store/board';
 
 const ScoreElement = styled.div`
   margin-left: 10px;
@@ -10,11 +8,7 @@ const ScoreElement = styled.div`
 `;
 
 function Score() {
-  const p1ScoreSelector = ({ score }: StoreState = initState) => (score[0]);
-  const p1Score = useSelector(p1ScoreSelector);
-
-  const p2ScoreSelector = ({ score }: StoreState = initState) => (score[1]);
-  const p2Score = useSelector(p2ScoreSelector);
+  const [p1Score, p2Score] = useBoardStore(({ score }) => score);
 
   useEffect(() => {
     document.title = `React Gomoku :: ${p1Score} - ${p2Score}`;

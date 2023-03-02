@@ -1,33 +1,30 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 
-import { store } from '^/store/Store';
 import BottomButtonElement from '^/components/atoms/BottomButtonElement';
 import Score from '^/components/atoms/Score';
-import { StoreState } from '^/store/StoreState';
-import { ActionKey } from '^/types';
+import useBoardStore from '^/store/board';
 
 function GameBottom() {
-  const dispatch = useDispatch();
+  const { undo, reset } = useBoardStore();
   return (
     <>
       <Score />
       <BottomButtonElement
         onClick={() => {
-          dispatch({ type: ActionKey.UNDO });
+          undo();
         }}
       >
         Undo
       </BottomButtonElement>
       <BottomButtonElement
         onClick={() => {
-          dispatch({ type: ActionKey.RESET });
+          reset();
         }}
       >
         Reset
       </BottomButtonElement>
       <BottomButtonElement onClick={() => {
-        const { history }: StoreState = store.getState();
+        const { history } = useBoardStore.getState();
 
         const replayData = {
           width: 19,

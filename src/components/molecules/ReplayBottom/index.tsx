@@ -1,9 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-
-import { ActionKey } from '^/types';
+import useBoardStore from '^/store/board';
 
 const BottomButtonElement = styled.button`
   all: unset;
@@ -21,7 +19,7 @@ const BottomButtonElement = styled.button`
 `;
 
 function ReplayBottom() {
-  const dispatch = useDispatch();
+  const { put, undo, reset } = useBoardStore();
   const [status, setStatus] = useState({
     history: Array<number[]>(),
     curTrack: 0,
@@ -45,7 +43,7 @@ function ReplayBottom() {
         return;
       }
 
-      dispatch({ type: ActionKey.RESET });
+      reset();
       setStatus({
         history: result.history,
         curTrack: 0,
@@ -61,7 +59,7 @@ function ReplayBottom() {
       return;
     }
 
-    dispatch({ type: ActionKey.UNDO });
+    undo();
     setStatus({
       history: status.history,
       curTrack: status.curTrack - 1,
@@ -74,10 +72,7 @@ function ReplayBottom() {
       return;
     }
 
-    dispatch({
-      type: ActionKey.PUT,
-      payload: status.history[status.curTrack],
-    });
+    put(status.history[status.curTrack]);
 
     setStatus({
       history: status.history,
