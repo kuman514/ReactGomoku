@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { palette } from '^/theme/Theme';
 
 interface UIButtonProps {
   readonly color?: string;
@@ -18,20 +19,20 @@ const UIButton = styled.button`
   padding-right: 0.25vw;
   padding-top: 0.25vh;
   padding-bottom: 0.25vh;
-  color: ${({ color }: UIButtonProps) => color ?? '#61dafb'};
-  border: 1px solid ${({ color }: UIButtonProps) => color ?? '#61dafb'};
+  color: ${({ color }: UIButtonProps) => color ?? palette.mainTheme};
+  border: 1px solid ${({ color }: UIButtonProps) => color ?? palette.mainTheme};
   border-radius: 10px;
   transition: all linear 120ms;
 
   &:hover {
     cursor: pointer;
     color: #ffffff;
-    background-color: ${({ color }: UIButtonProps) => color ?? '#61dafb'};
+    background-color: ${({ color }: UIButtonProps) => color ?? palette.mainTheme};
   }
 
   &:disabled {
     background-color: #000000;
-    border: #282c34;
+    border: ${palette.dark};
   }
 `;
 

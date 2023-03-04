@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 import useBoardStore from '^/store/board';
-import { themeButtons } from '^/theme/Theme';
+import { palette, themeButtons } from '^/theme/Theme';
 import * as T from '^/types';
 
 const Root = styled.div`
@@ -23,8 +23,8 @@ const ScoreElement = styled.span<ScoreElementProps>`
   padding-top: 0.15vh;
   padding-bottom: 0.15vh;
 
-  background-color: ${({ curPlayer, whichSide }) => (curPlayer === whichSide ? '#61dafb' : '')};
-  color: ${({ curPlayer, whichSide }) => (curPlayer === whichSide ? '#282c34' : '')};
+  background-color: ${({ curPlayer, whichSide }) => (curPlayer === whichSide ? palette.mainTheme : '')};
+  color: ${({ curPlayer, whichSide }) => (curPlayer === whichSide ? palette.dark : '')};
 `;
 
 function Score() {

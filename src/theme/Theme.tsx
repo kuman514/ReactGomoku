@@ -31,3 +31,8 @@ const THEME_INDEX = (() => {
 
 export const themeButtons: string[] = THEME_BUTTONS[THEME_INDEX];
 export const themeTitle: string = THEME_TITLES[THEME_INDEX];
+
+export const palette = {
+  mainTheme: '#61dafb',
+  dark: '#282c34',
+};

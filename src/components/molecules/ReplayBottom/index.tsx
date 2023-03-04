@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import useBoardStore from '^/store/board';
+import { palette } from '^/theme/Theme';
 
 const BottomButtonElement = styled.button`
   all: unset;
@@ -13,7 +14,7 @@ const BottomButtonElement = styled.button`
   padding-right: 0.25vw;
 
   &:hover {
-    background-color: #61dafb;
+    background-color: ${palette.mainTheme};
     cursor: pointer;
   }
 `;

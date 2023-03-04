@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import useBoardStore from '^/store/board';
 import useModeStore from '^/store/mode';
+import { palette } from '^/theme/Theme';
 import { AppMode, Player } from '^/types';
 
 const WinnerEffectElement = styled.div`
@@ -46,7 +47,7 @@ const WinnerEffectContentElement = styled.div`
       font-size: 0;
     }
     10% {
-      text-shadow: 0 0 5vw #61dafb, 0 0 3vw #61dafb, 0 0 1vw #61dafb;
+      text-shadow: 0 0 5vw ${palette.mainTheme}, 0 0 3vw ${palette.mainTheme}, 0 0 1vw ${palette.mainTheme};
       font-size: 250%;
     }
   }
