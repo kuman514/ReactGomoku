@@ -12,6 +12,7 @@ const ROW_BOUNDARY: number = HEIGHT - 1;
 
 export interface BoardStore {
   tiles: Player[][];
+  isFull: boolean;
   curPlayer: Player;
   history: number[][];
   winner: Player;
@@ -28,6 +29,7 @@ export interface BoardAction {
 function getInitState(): BoardStore {
   return {
     tiles: Array.from({ length: 19 }, () => Array.from({ length: 19 }, () => Player.NONE)),
+    isFull: false,
     curPlayer: Player.PLAYER1,
     history: new Array<number[]>(),
     winner: Player.NONE,
@@ -103,10 +105,15 @@ const useBoardStore = create<BoardStore & BoardAction>((set) => ({
     newHistory.push([row, col]);
 
     const newScore = Array.from(status.score);
+    const newIsFull: boolean = newTiles.every(
+      (newTileRow) => newTileRow.every((newTile) => newTile !== Player.NONE),
+    );
 
-    if (winner !== EMPTY) {
+    if (winner !== EMPTY || newIsFull) {
       playSFX('RESULT');
-      newScore[winner - 1]++;
+      if (winner !== EMPTY) {
+        newScore[winner - 1]++;
+      }
     } else {
       playSFX(`P${status.curPlayer}PUT`);
     }
@@ -114,6 +121,7 @@ const useBoardStore = create<BoardStore & BoardAction>((set) => ({
     return {
       ...status,
       tiles: newTiles,
+      isFull: newIsFull,
       curPlayer: newPlayer,
       history: newHistory,
       winner,
@@ -148,6 +156,7 @@ const useBoardStore = create<BoardStore & BoardAction>((set) => ({
     return {
       ...status,
       tiles: newTiles,
+      isFull: false,
       curPlayer: newPlayer,
       history: newHistory,
       winner: EMPTY,

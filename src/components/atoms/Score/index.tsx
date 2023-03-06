@@ -32,17 +32,20 @@ function Score() {
     curPlayer,
     winner,
     score: [p1Score, p2Score],
+    isFull,
   } = useBoardStore();
 
   useEffect(() => {
     document.title = `React Gomoku :: ${p1Score} - ${p2Score}`;
   });
 
+  const isPlaying: boolean = !isFull && winner === T.Player.NONE;
+
   return (
     <Root>
       <span>
         <ScoreElement
-          curPlayer={winner === T.Player.NONE ? curPlayer : T.Player.NONE}
+          curPlayer={isPlaying ? curPlayer : T.Player.NONE}
           whichSide={T.Player.PLAYER1}
         >
           {themeButtons[0]}
@@ -50,7 +53,7 @@ function Score() {
         </ScoreElement>
         {' - '}
         <ScoreElement
-          curPlayer={winner === T.Player.NONE ? curPlayer : T.Player.NONE}
+          curPlayer={isPlaying ? curPlayer : T.Player.NONE}
           whichSide={T.Player.PLAYER2}
         >
           {themeButtons[1]}

@@ -54,19 +54,24 @@ const WinnerEffectContentElement = styled.div`
 `;
 
 function WinnerEffect() {
-  const { winner } = useBoardStore();
+  const { winner, isFull } = useBoardStore();
   const { mode } = useModeStore();
 
-  if (mode === AppMode.GAME && winner !== Player.NONE) {
+  if (
+    mode === AppMode.GAME
+    && (winner !== Player.NONE || isFull)
+  ) {
     return (
       <WinnerEffectElement>
         <WinnerEffectContentElement>
           <span>
-            Player
-            {' '}
-            { winner }
-            {' '}
-            Wins!
+            {
+              winner !== Player.NONE ? (
+                `Player ${winner} Wins!`
+              ) : (
+                'Draw!'
+              )
+            }
           </span>
         </WinnerEffectContentElement>
       </WinnerEffectElement>
