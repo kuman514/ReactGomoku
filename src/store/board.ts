@@ -37,10 +37,7 @@ function getInitState(): BoardStore {
 }
 
 function isInRange(row: number, col: number): boolean {
-  if (row < 0 || row > ROW_BOUNDARY || col < 0 || col > COL_BOUNDARY) {
-    return false;
-  }
-  return true;
+  return (0 <= row && row <= ROW_BOUNDARY && 0 <= col && col <= COL_BOUNDARY);
 }
 
 function getNewTiles(status: BoardStore, row: number, col: number, player: Player): Player[][] {

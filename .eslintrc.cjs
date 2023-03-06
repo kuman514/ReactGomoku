@@ -121,6 +121,9 @@ module.exports = {
         'no-array-constructor': [
           'off',
         ],
+        yoda: [
+          'off',
+        ],
       },
     },
   ],
