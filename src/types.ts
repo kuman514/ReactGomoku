@@ -65,3 +65,9 @@ export enum Month {
   NOV = 10,
   DEC = 11,
 }
+
+export enum ThemeIndex {
+  DEFAULT = 'default',
+  HALLOWEEN = 'halloween',
+  WINTER = 'winter',
+}

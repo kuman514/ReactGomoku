@@ -1,18 +1,18 @@
-import { Month } from '^/types';
+import { Month, ThemeIndex } from '^/types';
 
-const THEME_BUTTONS = {
-  default: ['⚫', '⚪'],
-  halloween: ['🟣', '🟠'],
-  winter: ['🔴', '🟢'],
+const THEME_BUTTONS: Record<ThemeIndex, string[]> = {
+  [ThemeIndex.DEFAULT]: ['⚫', '⚪'],
+  [ThemeIndex.HALLOWEEN]: ['🟣', '🟠'],
+  [ThemeIndex.WINTER]: ['🔴', '🟢'],
 };
 
-const THEME_TITLES = {
-  default: 'React Gomoku',
-  halloween: 'Halloween Gomoku',
-  winter: 'Holiday Gomoku',
+const THEME_TITLES: Record<ThemeIndex, string> = {
+  [ThemeIndex.DEFAULT]: 'React Gomoku',
+  [ThemeIndex.HALLOWEEN]: 'Halloween Gomoku',
+  [ThemeIndex.WINTER]: 'Holiday Gomoku',
 };
 
-const THEME_INDEX = (() => {
+const THEME_INDEX: ThemeIndex = (() => {
   const dat: Date = new Date();
 
   const day: number = dat.getDate();
@@ -20,15 +20,15 @@ const THEME_INDEX = (() => {
 
   if (month === Month.OCT && day === 31) {
     // October 31
-    return 'halloween';
+    return ThemeIndex.HALLOWEEN;
   }
 
   if ((month === Month.JAN && day === 1) || (month === Month.DEC && day === 25)) {
     // January 1 or December 25
-    return 'winter';
+    return ThemeIndex.WINTER;
   }
 
-  return 'default';
+  return ThemeIndex.DEFAULT;
 })();
 
 export const themeButtons: string[] = THEME_BUTTONS[THEME_INDEX];
