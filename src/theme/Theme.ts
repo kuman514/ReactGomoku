@@ -1,3 +1,5 @@
+import { Month } from '^/types';
+
 const THEME_BUTTONS = {
   default: ['⚫', '⚪'],
   halloween: ['🟣', '🟠'],
@@ -16,12 +18,12 @@ const THEME_INDEX = (() => {
   const day: number = dat.getDate();
   const month: number = dat.getMonth();
 
-  if (month === 9 && day === 31) {
+  if (month === Month.OCT && day === 31) {
     // October 31
     return 'halloween';
   }
 
-  if ((month === 0 && day === 1) || (month === 11 && day === 25)) {
+  if ((month === Month.JAN && day === 1) || (month === Month.DEC && day === 25)) {
     // January 1 or December 25
     return 'winter';
   }
