@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import useBoardStore from '^/store/board';
-import { palette } from '^/theme/Theme';
+import { palette } from '^/theme';
 
 const BottomButtonElement = styled.button`
   all: unset;

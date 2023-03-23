@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import useBoardStore from '^/store/board';
 import useModeStore from '^/store/mode';
-import { palette } from '^/theme/Theme';
+import { palette } from '^/theme';
 import { AppMode, Player } from '^/types';
 
 const WinnerEffectElement = styled.div`

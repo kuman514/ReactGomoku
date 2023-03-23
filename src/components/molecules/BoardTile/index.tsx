@@ -1,7 +1,7 @@
 import React from 'react';
 
 import BoardButton from '^/components/atoms/BoardButton';
-import { themeButtons } from '^/theme/Theme';
+import { themeButtons } from '^/theme';
 import * as T from '^/types';
 import useBoardStore from '^/store/board';
 import useModeStore from '^/store/mode';

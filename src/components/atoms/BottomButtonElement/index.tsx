@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { palette } from '^/theme/Theme';
+import { palette } from '^/theme';
 
 const BottomButtonElement = styled.button`
   all: unset;

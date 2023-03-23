@@ -5,7 +5,7 @@ import Board from '^/components/organisms/Board';
 import ModeChanger from '^/components/organisms/ModeChanger';
 import Bottom from '^/components/organisms/Bottom';
 import WinnerEffect from '^/components/molecules/WinnerEffect';
-import { themeTitle } from '^/theme/Theme';
+import { themeTitle } from '^/theme';
 
 function Main() {
   return (
