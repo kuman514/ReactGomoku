@@ -26,12 +26,12 @@ const UIButton = styled.button`
 
   &:hover {
     cursor: pointer;
-    color: #ffffff;
+    color: ${palette.pureWhite};
     background-color: ${({ color }: UIButtonProps) => color ?? palette.mainTheme};
   }
 
   &:disabled {
-    background-color: #000000;
+    background-color: ${palette.pureBlack};
     border: ${palette.dark};
   }
 `;

@@ -11,6 +11,7 @@ import BottomEdge from '^/Img/BottomEdge.png';
 import RightBottomCorner from '^/Img/RightBottomCorner.png';
 
 import * as T from '^/types';
+import { palette } from '^/theme';
 
 interface BoardButtonStyleProps {
   readonly position: T.ButtonPosition;
@@ -35,7 +36,7 @@ const BoardButton = styled.button`
   box-sizing: border-box;
   margin: 0;
   background-size: 100%;
-  color: ${({ put }: BoardButtonStyleProps) => (put ? '#000000' : 'transparent')};
+  color: ${({ put }: BoardButtonStyleProps) => (put ? palette.pureBlack : 'transparent')};
   background-image: url(${({ position }: BoardButtonStyleProps) => urls[position]});
 
   &:hover {
