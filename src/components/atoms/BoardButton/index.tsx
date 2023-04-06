@@ -39,8 +39,9 @@ const BoardButton = styled.button`
   color: ${({ put }: BoardButtonStyleProps) => (put ? palette.pureBlack : 'transparent')};
   background-image: url(${({ position }: BoardButtonStyleProps) => urls[position]});
 
+  cursor: pointer;
+
   &:hover {
-    cursor: pointer;
     opacity: 0.5;
   }
 

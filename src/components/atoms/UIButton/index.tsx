@@ -23,9 +23,9 @@ const UIButton = styled.button`
   border: 1px solid ${({ color }: UIButtonProps) => color ?? palette.mainTheme};
   border-radius: 10px;
   transition: all linear 120ms;
+  cursor: pointer;
 
   &:hover {
-    cursor: pointer;
     color: ${palette.pureWhite};
     background-color: ${({ color }: UIButtonProps) => color ?? palette.mainTheme};
   }

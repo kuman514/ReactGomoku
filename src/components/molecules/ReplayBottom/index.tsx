@@ -13,9 +13,10 @@ const BottomButtonElement = styled.button`
   padding-left: 0.25vw;
   padding-right: 0.25vw;
 
+  cursor: pointer;
+
   &:hover {
     background-color: ${palette.mainTheme};
-    cursor: pointer;
   }
 `;
 
