@@ -4,7 +4,7 @@ import React, { ReactNode } from 'react';
 
 import { AppMode } from '^/types';
 
-interface ModeSelectorProps {
+interface Props {
   readonly id: string;
   readonly value: AppMode;
   readonly children?: ReactNode;
@@ -13,7 +13,7 @@ interface ModeSelectorProps {
 
 function ModeSelector({
   id, value, children, defaultChecked,
-}: ModeSelectorProps) {
+}: Props) {
   return (
     <>
       <input

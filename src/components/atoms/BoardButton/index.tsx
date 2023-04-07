@@ -13,12 +13,6 @@ import RightBottomCorner from '^/Img/RightBottomCorner.png';
 import * as T from '^/types';
 import { palette } from '^/theme';
 
-interface BoardButtonStyleProps {
-  readonly position: T.ButtonPosition;
-  readonly put?: boolean;
-  readonly flash?: boolean;
-}
-
 export const urls: T.ButtonBackgroundUrls = {
   [T.ButtonPosition.LeftTopCorner]: LeftTopCorner,
   [T.ButtonPosition.TopEdge]: TopEdge,
@@ -31,13 +25,19 @@ export const urls: T.ButtonBackgroundUrls = {
   [T.ButtonPosition.RightBottomCorner]: RightBottomCorner,
 };
 
-const BoardButton = styled.button`
+interface Props {
+  readonly position: T.ButtonPosition;
+  readonly put?: boolean;
+  readonly flash?: boolean;
+}
+
+const BoardButton = styled.button<Props>`
   all: unset;
   box-sizing: border-box;
   margin: 0;
   background-size: 100%;
-  color: ${({ put }: BoardButtonStyleProps) => (put ? palette.pureBlack : 'transparent')};
-  background-image: url(${({ position }: BoardButtonStyleProps) => urls[position]});
+  color: ${({ put }: Props) => (put ? palette.pureBlack : 'transparent')};
+  background-image: url(${({ position }: Props) => urls[position]});
 
   cursor: pointer;
 
@@ -49,7 +49,7 @@ const BoardButton = styled.button`
     border: 3px solid red;
   }
 
-  animation: ${({ flash }: BoardButtonStyleProps) => (flash
+  animation: ${({ flash }: Props) => (flash
     ? 'FlashTrackedResult linear infinite 600ms'
     : 'none')};
   @keyframes FlashTrackedResult {

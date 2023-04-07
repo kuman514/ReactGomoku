@@ -6,12 +6,6 @@ import * as T from '^/types';
 import useBoardStore from '^/store/board';
 import useModeStore from '^/store/mode';
 
-interface BoardTileProps {
-  readonly row: number;
-  readonly col: number;
-  readonly onClick: (row: number, col: number) => void;
-}
-
 const getPosition: (row: number, col: number) => T.ButtonPosition = (row, col) => {
   let finalRow: number = 1;
   switch (row) {
@@ -48,7 +42,13 @@ const getStone: (who?: T.Player) => string = (who) => {
   }
 };
 
-function BoardTile({ row, col, onClick }: BoardTileProps) {
+interface Props {
+  readonly row: number;
+  readonly col: number;
+  readonly onClick: (row: number, col: number) => void;
+}
+
+function BoardTile({ row, col, onClick }: Props) {
   const position: T.ButtonPosition = getPosition(row, col);
 
   const { tiles, winner, winningTracks } = useBoardStore();

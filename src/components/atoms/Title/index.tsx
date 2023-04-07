@@ -1,10 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-interface TitleProps {
-  readonly title: string
-}
-
 const TitleElement = styled.div`
   margin-right: 1vw;
   & * {
@@ -12,7 +8,11 @@ const TitleElement = styled.div`
   }
 `;
 
-function Title({ title }: TitleProps) {
+interface Props {
+  readonly title: string
+}
+
+function Title({ title }: Props) {
   return (
     <TitleElement>
       { title }
