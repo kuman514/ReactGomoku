@@ -1,20 +1,32 @@
-import styled from 'styled-components';
+import React, { ReactNode } from 'react';
+import { Button } from '@chakra-ui/react';
+
 import { palette } from '^/theme';
 
-const BottomButtonElement = styled.button`
-  all: unset;
-  background-color: gray;
-  margin-top: 1vh;
-  margin-left: 0.25vw;
-  margin-right: 0.25vw;
-  padding-left: 0.25vw;
-  padding-right: 0.25vw;
+interface Props {
+  children?: ReactNode;
+  onClick?: () => void;
+}
 
-  cursor: pointer;
-
-  &:hover {
-    background-color: ${palette.mainTheme};
-  }
-`;
+function BottomButtonElement({ children, onClick }: Props) {
+  return (
+    <Button
+      onClick={onClick}
+      variant="solid"
+      colorScheme="gray"
+      style={{
+        marginLeft: '0.25vw',
+        marginRight: '0.25vw',
+        cursor: 'pointer',
+        color: palette.dark,
+      }}
+      _hover={{
+        backgroundColor: palette.mainTheme,
+      }}
+    >
+      {children}
+    </Button>
+  );
+}
 
 export default BottomButtonElement;

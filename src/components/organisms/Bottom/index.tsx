@@ -7,9 +7,11 @@ import GameBottom from '^/components/molecules/GameBottom';
 import useModeStore from '^/store/mode';
 
 const BottomElement = styled.div`
-  & * {
-    display: inline;
-  }
+  display: flex;
+  justify-content: center;
+
+  box-sizing: border-box;
+  height: calc(10px + 3.1vmin);
 `;
 
 function BottomType(mode: AppMode) {

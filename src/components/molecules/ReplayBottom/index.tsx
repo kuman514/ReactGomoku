@@ -1,24 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import { Input } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import BottomButtonElement from '^/components/atoms/BottomButtonElement';
 import useBoardStore from '^/store/board';
-import { palette } from '^/theme';
-
-const BottomButtonElement = styled.button`
-  all: unset;
-  background-color: gray;
-  margin-top: 1vh;
-  margin-left: 0.25vw;
-  margin-right: 0.25vw;
-  padding-left: 0.25vw;
-  padding-right: 0.25vw;
-
-  cursor: pointer;
-
-  &:hover {
-    background-color: ${palette.mainTheme};
-  }
-`;
 
 function ReplayBottom() {
   const { put, undo, reset } = useBoardStore();
@@ -90,13 +74,16 @@ function ReplayBottom() {
   return (
     <>
       <label>Replay File: </label>
-      <input
+      <Input
         type="file"
         accept="application/json"
         onChange={(event) => {
-          if ((event.target as HTMLInputElement).files) {
-            loadReplay((event.target as HTMLInputElement).files as FileList);
+          if (event.target.files) {
+            loadReplay(event.target.files);
           }
+        }}
+        style={{
+          width: '35%',
         }}
       />
       <BottomButtonElement onClick={onClickPrev}>

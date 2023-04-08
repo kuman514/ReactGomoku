@@ -8,6 +8,9 @@ import * as T from '^/types';
 const Root = styled.div`
   margin-left: 10px;
   margin-right: 10px;
+
+  display: flex;
+  flex-direction: row;
 `;
 
 interface ScoreElementProps {
@@ -15,8 +18,7 @@ interface ScoreElementProps {
   whichSide: T.Player;
 }
 
-const ScoreElement = styled.span<ScoreElementProps>`
-  height: calc(10px + 2vmin + 0.8vh);
+const ScoreElement = styled.div<ScoreElementProps>`
   font-size: calc(8px + 2vmin);
   padding-left: 0.25vw;
   padding-right: 0.25vw;
@@ -43,23 +45,21 @@ function Score() {
 
   return (
     <Root>
-      <span>
-        <ScoreElement
-          curPlayer={isPlaying ? curPlayer : T.Player.NONE}
-          whichSide={T.Player.PLAYER1}
-        >
-          {themeButtons[0]}
-          {p1Score}
-        </ScoreElement>
-        {' - '}
-        <ScoreElement
-          curPlayer={isPlaying ? curPlayer : T.Player.NONE}
-          whichSide={T.Player.PLAYER2}
-        >
-          {themeButtons[1]}
-          {p2Score}
-        </ScoreElement>
-      </span>
+      <ScoreElement
+        curPlayer={isPlaying ? curPlayer : T.Player.NONE}
+        whichSide={T.Player.PLAYER1}
+      >
+        {themeButtons[0]}
+        {p1Score}
+      </ScoreElement>
+      {' - '}
+      <ScoreElement
+        curPlayer={isPlaying ? curPlayer : T.Player.NONE}
+        whichSide={T.Player.PLAYER2}
+      >
+        {themeButtons[1]}
+        {p2Score}
+      </ScoreElement>
     </Root>
   );
 }
