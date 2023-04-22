@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-import { Input } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import BottomButtonElement from '^/components/atoms/BottomButtonElement';
 import useBoardStore from '^/store/board';
@@ -67,25 +65,32 @@ function ReplayBottom() {
     });
   };
 
+  const handleOnClickLoadReplay: () => void = () => {
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'application/json';
+    fileInput.addEventListener('change', (event: Event) => {
+      if (event.target instanceof HTMLInputElement) {
+        const { files } = event.target;
+        if (!files || files.length <= 0) {
+          return;
+        }
+        loadReplay(files);
+      }
+    });
+
+    fileInput.click();
+  };
+
   useEffect(() => {
     document.title = `React Gomoku :: Replay Mode - ${status.curTrack} / ${status.maxTrack}`;
   });
 
   return (
     <>
-      <label>Replay File: </label>
-      <Input
-        type="file"
-        accept="application/json"
-        onChange={(event) => {
-          if (event.target.files) {
-            loadReplay(event.target.files);
-          }
-        }}
-        style={{
-          width: '35%',
-        }}
-      />
+      <BottomButtonElement onClick={handleOnClickLoadReplay}>
+        Load Replay
+      </BottomButtonElement>
       <BottomButtonElement onClick={onClickPrev}>
         Prev
       </BottomButtonElement>
