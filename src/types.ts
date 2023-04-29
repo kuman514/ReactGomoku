@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-shadow */
 export enum ButtonPosition {
   LeftTopCorner = 'LEFT_TOP_CORNER',
   TopEdge = 'TOP_EDGE',
