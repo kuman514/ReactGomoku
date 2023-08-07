@@ -51,10 +51,11 @@ interface Props {
 function BoardTile({ row, col, onClick }: Props) {
   const position: T.ButtonPosition = getPosition(row, col);
 
-  const { tiles, winner, winningTracks } = useBoardStore();
-  const { mode } = useModeStore();
+  const whoPut = useBoardStore((state) => state.tiles[row][col]);
+  const winner = useBoardStore((state) => state.winner);
+  const winningTracks = useBoardStore((state) => state.winningTracks);
+  const mode = useModeStore((state) => state.mode);
 
-  const whoPut: T.Player = tiles[row][col];
   const stone: string = getStone(whoPut);
 
   const isPut: boolean = whoPut !== T.Player.NONE;

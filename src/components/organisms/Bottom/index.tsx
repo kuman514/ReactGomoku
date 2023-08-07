@@ -30,7 +30,7 @@ function BottomType(mode: AppMode) {
 }
 
 function Bottom() {
-  const { mode } = useModeStore();
+  const mode = useModeStore((state) => state.mode);
   return (
     <BottomElement>
       {BottomType(mode)}

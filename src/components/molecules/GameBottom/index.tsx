@@ -5,7 +5,8 @@ import Score from '^/components/atoms/Score';
 import useBoardStore from '^/store/board';
 
 function GameBottom() {
-  const { undo, reset } = useBoardStore();
+  const undo = useBoardStore((state) => state.undo);
+  const reset = useBoardStore((state) => state.reset);
   return (
     <>
       <Score />
