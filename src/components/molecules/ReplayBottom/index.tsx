@@ -3,7 +3,10 @@ import BottomButtonElement from '^/components/atoms/BottomButtonElement';
 import useBoardStore from '^/store/board';
 
 function ReplayBottom() {
-  const { put, undo, reset } = useBoardStore();
+  const put = useBoardStore((state) => state.put);
+  const undo = useBoardStore((state) => state.undo);
+  const reset = useBoardStore((state) => state.reset);
+
   const [status, setStatus] = useState({
     history: Array<number[]>(),
     curTrack: 0,

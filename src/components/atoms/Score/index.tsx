@@ -30,12 +30,10 @@ const ScoreElement = styled.div<ScoreElementProps>`
 `;
 
 function Score() {
-  const {
-    curPlayer,
-    winner,
-    score: [p1Score, p2Score],
-    isFull,
-  } = useBoardStore();
+  const curPlayer = useBoardStore((state) => state.curPlayer);
+  const winner = useBoardStore((state) => state.winner);
+  const [p1Score, p2Score] = useBoardStore((state) => state.score);
+  const isFull = useBoardStore((state) => state.isFull);
 
   useEffect(() => {
     document.title = `React Gomoku :: ${p1Score} - ${p2Score}`;

@@ -1,7 +1,9 @@
 import { create } from 'zustand';
 
 import { playSFX } from '^/sfxs/SoundEffects';
-import { Player } from '^/types';
+import { AppMode, Player } from '^/types';
+
+import useModeStore from './mode';
 
 const EMPTY: number = 0;
 const WIDTH: number = 19;
@@ -111,7 +113,7 @@ const useBoardStore = create<BoardStore & BoardAction>((set) => ({
 
     if (winner !== EMPTY || newIsFull) {
       playSFX('RESULT');
-      if (winner !== EMPTY) {
+      if (useModeStore.getState().mode === AppMode.GAME && winner !== EMPTY) {
         newScore[winner - 1]++;
       }
     } else {

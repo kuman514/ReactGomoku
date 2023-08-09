@@ -54,8 +54,9 @@ const WinnerEffectContentElement = styled.div`
 `;
 
 function WinnerEffect() {
-  const { winner, isFull } = useBoardStore();
-  const { mode } = useModeStore();
+  const winner = useBoardStore((state) => state.winner);
+  const isFull = useBoardStore((state) => state.isFull);
+  const mode = useModeStore((state) => state.mode);
 
   if (
     mode === AppMode.GAME

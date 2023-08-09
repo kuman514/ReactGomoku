@@ -13,8 +13,8 @@ const ModeChangerElement = styled.div`
 `;
 
 function ModeChanger() {
-  const { reset } = useBoardStore();
-  const { changeMode } = useModeStore();
+  const reset = useBoardStore((state) => state.reset);
+  const changeMode = useModeStore((state) => state.changeMode);
 
   return (
     <ModeChangerElement

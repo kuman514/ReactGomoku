@@ -30,7 +30,7 @@ const TilesElement = styled.div`
 `;
 
 function Board() {
-  const { put } = useBoardStore();
+  const put = useBoardStore((state) => state.put);
 
   const onClickButton: (row: number, col: number) => void = (row, col) => {
     if (Number.isNaN(row) || Number.isNaN(col)) return;
